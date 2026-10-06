@@ -10,18 +10,17 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="PRODMON">
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogIlByb2R1Y3Rpb24gTWF0cml4IE1vbml0b3IgUFJPIiwKICAic2hvcnRfbmFtZSI6ICJQUk9ETU9OIiwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMxMjE1MWIiLAogICJ0aGVtZV9jb2xvciI6ICIjMTIxNTFiIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvZm9udC1hd2Vzb21lLzYuNC4wL3N2Z3Mvc29saWQvbmV0d29yay13aXJlZC5zdmciLAogICAgICAic2l6ZXMiOiAiMTkyeDE5MiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9LAogICAgewogICAgICAic3JjIjogImh0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL2ZvbnQtYXdlc29tZS82LjQuMC9zdmdzL3NvbGlkL25ldHdvcmstd2lyZWQuc3ZnIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfQogIF0KfQ==">
 
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
-<!-- FontAwesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Phosphor Icons (Duotone + Bold) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
 <!-- SheetJS for Excel Import/Export -->
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <!-- Google Fonts -->
@@ -40,17 +39,17 @@
       extend: {
         colors: {
           slate: {
-          50: 'rgb(var(--s-50) / <alpha-value>)',
-          100: 'rgb(var(--s-100) / <alpha-value>)',
-          200: 'rgb(var(--s-200) / <alpha-value>)',
-          300: 'rgb(var(--s-300) / <alpha-value>)',
-          400: 'rgb(var(--s-400) / <alpha-value>)',
-          500: 'rgb(var(--s-500) / <alpha-value>)',
-          600: 'rgb(var(--s-600) / <alpha-value>)',
-          700: 'rgb(var(--s-700) / <alpha-value>)',
-          800: 'rgb(var(--s-800) / <alpha-value>)',
-          900: 'rgb(var(--s-900) / <alpha-value>)',
-          950: 'rgb(var(--s-950) / <alpha-value>)'
+            50: 'rgb(var(--s-50) / <alpha-value>)',
+            100: 'rgb(var(--s-100) / <alpha-value>)',
+            200: 'rgb(var(--s-200) / <alpha-value>)',
+            300: 'rgb(var(--s-300) / <alpha-value>)',
+            400: 'rgb(var(--s-400) / <alpha-value>)',
+            500: 'rgb(var(--s-500) / <alpha-value>)',
+            600: 'rgb(var(--s-600) / <alpha-value>)',
+            700: 'rgb(var(--s-700) / <alpha-value>)',
+            800: 'rgb(var(--s-800) / <alpha-value>)',
+            900: 'rgb(var(--s-900) / <alpha-value>)',
+            950: 'rgb(var(--s-950) / <alpha-value>)'
           },
           brand: {
             50: '#f0f7ff',
@@ -133,6 +132,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  i.ph-duotone, i.ph-bold { display: inline-block; line-height: 1; vertical-align: -0.125em; }
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
@@ -143,12 +143,12 @@
   <!-- PWA INSTALL BANNER PROMPT -->
   <div id="pwa-install-banner" class="hidden bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-4 py-2.5 text-xs sm:text-sm font-semibold flex items-center justify-between shadow-xl sticky top-0 z-50">
     <div class="flex items-center gap-2">
-      <i class="fa-solid fa-mobile-screen-button text-base animate-bounce"></i>
+      <i class="ph-duotone ph-device-mobile text-base animate-bounce"></i>
       <span>Tambahkan <strong>PRODMON</strong> ke Layar Utama HP / Desktop untuk akses cepat offline!</span>
     </div>
     <div class="flex items-center gap-2">
       <button onclick="installPWA()" class="bg-white text-blue-900 font-bold px-3 py-1 rounded-lg shadow hover:bg-slate-100 transition text-xs">Install Sekarang</button>
-      <button onclick="dismissPWABanner()" class="text-white/80 hover:text-white p-1"><i class="fa-solid fa-xmark"></i></button>
+      <button onclick="dismissPWABanner()" class="text-white/80 hover:text-white p-1"><i class="ph-bold ph-x"></i></button>
     </div>
   </div>
 
@@ -156,11 +156,11 @@
   <header class="glass-nav sticky top-0 z-40 px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2 shadow-lg" style="padding-top:max(0.625rem, env(safe-area-inset-top, 0px))">
     <div class="flex items-center gap-2.5 min-w-0">
       <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/20 text-white font-extrabold text-base sm:text-xl shrink-0">
-        <i class="fa-solid fa-network-wired"></i>
+        <i class="ph-duotone ph-share-network"></i>
       </div>
       <div class="min-w-0">
         <div class="flex items-center gap-1.5">
-          <h1 class="font-extrabold text-base sm:text-lg leading-tight tracking-wide text-white truncate">PRODMON <span class="text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400 border border-blue-500/30">v3.8</span></h1>
+          <h1 class="font-extrabold text-base sm:text-lg leading-tight tracking-wide text-white truncate">Monitoring Prod <span class="text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400 border border-blue-500/30">v3.8</span></h1>
         </div>
         <p class="text-[10px] sm:text-xs text-slate-400 truncate hidden xs:block">Production Planning & Routing Matrix System</p>
       </div>
@@ -168,17 +168,17 @@
 
     <!-- Desktop Navigation Tabs -->
     <nav class="hidden md:flex items-center gap-1 bg-slate-900/80 p-1.5 rounded-xl border border-slate-800">
-      <button onclick="switchTab('matrix')" id="nav-matrix" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center gap-2 bg-blue-600 text-white shadow-md">
-        <i class="fa-solid fa-sitemap text-cyan-300"></i> Matriks Layout
+      <button onclick="switchTab('dashboard')" id="nav-dashboard" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center gap-2 bg-blue-600 text-white shadow-md">
+        <i class="ph-duotone ph-gauge text-cyan-300"></i> Dashboard Produksi
       </button>
-      <button onclick="switchTab('dashboard')" id="nav-dashboard" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center gap-2 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
-        <i class="fa-solid fa-gauge-high"></i> Monitoring Produksi
+      <button onclick="switchTab('matrix')" id="nav-matrix" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center gap-2 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+        <i class="ph-duotone ph-tree-structure"></i> Matriks Layout
       </button>
       <button onclick="switchTab('material')" id="nav-material" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center gap-2 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
-        <i class="fa-solid fa-boxes-stacked"></i> Master Produk
+        <i class="ph-duotone ph-package"></i> Master Produk
       </button>
       <button onclick="switchTab('exim')" id="nav-exim" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 flex items-center gap-2 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
-        <i class="fa-solid fa-gear text-emerald-400"></i> Export / Import
+        <i class="ph-duotone ph-gear-six text-emerald-400"></i> Export / Import
       </button>
     </nav>
 
@@ -193,20 +193,20 @@
 
   <!-- MOBILE BOTTOM NAVIGATION BAR -->
   <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-xl border-t border-slate-800 px-2 py-1.5 flex items-center justify-around shadow-2xl safe-bottom">
-    <button onclick="switchTab('matrix')" id="mob-nav-matrix" class="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl text-blue-400 font-bold transition-all">
-      <i class="fa-solid fa-sitemap text-lg"></i>
+    <button onclick="switchTab('dashboard')" id="mob-nav-dashboard" class="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl text-blue-400 font-bold transition-all">
+      <i class="ph-duotone ph-gauge text-lg"></i>
+      <span class="text-[10px]">Dashboard</span>
+    </button>
+    <button onclick="switchTab('matrix')" id="mob-nav-matrix" class="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl text-slate-400 font-medium transition-all">
+      <i class="ph-duotone ph-tree-structure text-lg"></i>
       <span class="text-[10px]">Matriks</span>
     </button>
-    <button onclick="switchTab('dashboard')" id="mob-nav-dashboard" class="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl text-slate-400 font-medium transition-all">
-      <i class="fa-solid fa-gauge-high text-lg"></i>
-      <span class="text-[10px]">Produksi</span>
-    </button>
     <button onclick="switchTab('material')" id="mob-nav-material" class="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl text-slate-400 font-medium transition-all">
-      <i class="fa-solid fa-boxes-stacked text-lg"></i>
+      <i class="ph-duotone ph-package text-lg"></i>
       <span class="text-[10px]">Produk</span>
     </button>
     <button onclick="switchTab('exim')" id="mob-nav-exim" class="flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl text-slate-400 font-medium transition-all">
-      <i class="fa-solid fa-gear text-lg text-emerald-400"></i>
+      <i class="ph-duotone ph-gear-six text-lg text-emerald-400"></i>
       <span class="text-[10px]">Ex/Import</span>
     </button>
   </div>
@@ -214,24 +214,156 @@
   <!-- MAIN CONTAINER -->
   <main class="flex-1 max-w-[1600px] w-full mx-auto p-3 sm:p-4 lg:p-6 space-y-4 sm:space-y-6">
 
-    <!-- ==================== TAB 1: MATRIKS LAYOUT ==================== -->
-    <section id="tab-matrix" class="tab-content space-y-4 sm:space-y-6">
+    <!-- ==================== TAB 1: DASHBOARD PRODUKSI (MODERN & INTERAKTIF) ==================== -->
+    <section id="tab-dashboard" class="tab-content space-y-4 sm:space-y-6">
+      
+      <!-- HERO / BANNER DASHBOARD -->
+      <div class="glass-card p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-slate-900 via-blue-950/40 to-slate-900 border border-blue-500/30 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+        <div>
+          <span class="px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 text-[10px] sm:text-xs font-mono font-bold border border-blue-500/20 uppercase tracking-wider">
+            Real-Time Production Control & Analytics
+          </span>
+          <h2 class="text-base sm:text-2xl font-extrabold text-white mt-1.5 flex items-center gap-2">
+            <i class="ph-duotone ph-chart-line-up text-blue-400"></i> Dashboard Monitoring Output Produksi
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl leading-relaxed">
+            Pantau pencapaian *batch output*, efisiensi target, dan kekurangan produksi secara terintegrasi per-Line.
+          </p>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI METRIC CARDS -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-4">
+        <div class="glass-card p-3.5 sm:p-4 rounded-xl sm:rounded-2xl relative overflow-hidden group hover:border-blue-500/50 transition">
+          <div class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider truncate">Total Line Active</div>
+          <div class="text-lg sm:text-2xl font-extrabold font-mono text-white mt-1" id="stat-active-machines">0</div>
+          <div class="text-[10px] text-slate-400 mt-1 truncate flex items-center gap-1">
+            <i class="ph-duotone ph-cpu text-blue-400"></i> Line Beroperasi
+          </div>
+        </div>
+
+        <div class="glass-card p-3.5 sm:p-4 rounded-xl sm:rounded-2xl relative overflow-hidden group hover:border-blue-500/50 transition">
+          <div class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider truncate">Target Qty</div>
+          <div class="text-lg sm:text-2xl font-extrabold font-mono text-blue-400 mt-1" id="stat-target-qty">0</div>
+          <div class="text-[10px] text-slate-400 mt-1 truncate">Total Rencana</div>
+        </div>
+
+        <div class="glass-card p-3.5 sm:p-4 rounded-xl sm:rounded-2xl relative overflow-hidden group hover:border-emerald-500/50 transition">
+          <div class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider truncate">Conf. Qty (OK)</div>
+          <div class="text-lg sm:text-2xl font-extrabold font-mono text-emerald-400 mt-1" id="stat-conf-qty">0</div>
+          <div class="text-[10px] text-emerald-400/80 mt-1 truncate">Terkonfirmasi OK</div>
+        </div>
+
+        <div class="glass-card p-3.5 sm:p-4 rounded-xl sm:rounded-2xl relative overflow-hidden group hover:border-indigo-500/50 transition">
+          <div class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider truncate">Del. Qty (Kirim)</div>
+          <div class="text-lg sm:text-2xl font-extrabold font-mono text-indigo-400 mt-1" id="stat-del-qty">0</div>
+          <div class="text-[10px] text-indigo-400/80 mt-1 truncate">Sudah Terkirim</div>
+        </div>
+
+        <div class="glass-card p-3.5 sm:p-4 rounded-xl sm:rounded-2xl relative overflow-hidden group hover:border-rose-500/50 transition">
+          <div class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider truncate">Kekurangan Target</div>
+          <div class="text-lg sm:text-2xl font-extrabold font-mono text-rose-400 mt-1" id="stat-shortage-qty">0</div>
+          <div class="text-[10px] text-rose-400/80 mt-1 truncate">Sisa Kurang</div>
+        </div>
+
+        <div class="glass-card p-3.5 sm:p-4 rounded-xl sm:rounded-2xl relative overflow-hidden bg-gradient-to-br from-slate-900 to-amber-950/30 border border-amber-500/30">
+          <div class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider truncate">Avg Achievement</div>
+          <div class="text-lg sm:text-2xl font-extrabold font-mono text-amber-400 mt-1" id="stat-avg-achievement">0%</div>
+          <div class="text-[10px] text-amber-300/80 mt-1 truncate">Rata-Rata Capaian</div>
+        </div>
+      </div>
+
+      <!-- VISUAL PERFORMANCE SUMMARY / PROGRESS METRIC -->
+      <div class="glass-card p-4 sm:p-5 rounded-xl sm:rounded-2xl space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
+          <h3 class="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
+            <i class="ph-duotone ph-chart-bar text-cyan-400"></i> Visualisasi Pencapaian Target Output per-Line
+          </h3>
+          <span class="text-[11px] font-mono text-slate-400" id="dash-chart-summary">0 Active Lines</span>
+        </div>
+        <div id="dash-visual-bars" class="space-y-2.5 max-h-64 overflow-y-auto pr-1">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- FILTER & CONTROLS -->
+      <div class="glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl flex flex-col md:flex-row gap-2.5 items-stretch md:items-center justify-between">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full md:w-auto">
+          <div class="relative w-full sm:w-64">
+            <i class="ph-bold ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input type="text" id="dash-search" oninput="renderDashboardTable()" placeholder="Cari Line, Kode / Deskripsi..." class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-8 pr-3 py-2 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition">
+          </div>
+          <div class="grid grid-cols-2 gap-2 sm:flex sm:items-center">
+            <select id="dash-filter-machine" onchange="renderDashboardTable()" class="w-full sm:w-auto bg-slate-900/90 border border-slate-700/80 rounded-xl px-2.5 py-2 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-blue-500 transition truncate">
+              <option value="">Semua Line/Mesin</option>
+            </select>
+            <select id="dash-filter-status" onchange="renderDashboardTable()" class="w-full sm:w-auto bg-slate-900/90 border border-slate-700/80 rounded-xl px-2.5 py-2 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-blue-500 transition truncate">
+              <option value="">Status Achievement</option>
+              <option value="complete">Tercapai (≥ 100%)</option>
+              <option value="warning">Mendekati (80% - 99%)</option>
+              <option value="danger">Kurang (&lt; 80%)</option>
+            </select>
+          </div>
+        </div>
+        <span class="text-[11px] text-slate-400 font-mono text-right sm:text-left" id="prod-record-count">0 items</span>
+      </div>
+
+      <!-- MAIN PRODUCTION MONITORING TABLE -->
+      <div class="glass-card rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
+        <div class="p-3 sm:p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
+          <div class="flex items-center gap-2">
+            <i class="ph-duotone ph-table text-blue-400 text-sm sm:text-base"></i>
+            <h2 class="font-bold text-white text-sm sm:text-base">Monitoring Data Batch Output Produksi</h2>
+          </div>
+        </div>
+
+        <div id="production-mobile-list" class="block md:hidden divide-y divide-slate-800/60"></div>
+
+        <div class="hidden md:block overflow-x-auto">
+          <table class="w-full text-left text-sm text-slate-300">
+            <thead class="bg-slate-900/90 text-slate-400 font-semibold text-xs uppercase tracking-wider border-b border-slate-800">
+              <tr>
+                <th class="py-3.5 px-3.5">Line Produksi</th>
+                <th class="py-3.5 px-3.5">Kode Produk</th>
+                <th class="py-3.5 px-3.5">Deskripsi Produk</th>
+                <th class="py-3.5 px-3.5 text-right">Target</th>
+                <th class="py-3.5 px-3.5 text-right">Conf.</th>
+                <th class="py-3.5 px-3.5 text-right">Del.</th>
+                <th class="py-3.5 px-3.5 text-right">Hasil Output</th>
+                <th class="py-3.5 px-3.5 text-center">Unit</th>
+                <th class="py-3.5 px-3.5 text-right">Kurang</th>
+                <th class="py-3.5 px-3.5 text-center">Achievement</th>
+                <th class="py-3.5 px-3.5 text-center">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="production-tbody" class="divide-y divide-slate-800/60 font-mono"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: MATRIKS LAYOUT ==================== -->
+    <section id="tab-matrix" class="tab-content hidden space-y-4 sm:space-y-6">
       <div class="glass-card p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-slate-900 via-cyan-950/40 to-slate-900 border border-cyan-500/30 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3">
         <div>
           <span class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 text-[10px] sm:text-xs font-mono font-bold border border-cyan-500/20 uppercase tracking-wider">Line - Tank - Mixer Allocation</span>
           <h2 class="text-base sm:text-2xl font-extrabold text-white mt-1 flex items-center gap-2">
-            <i class="fa-solid fa-diagram-project text-cyan-400"></i> Matriks Routing & Configuration Layout
+            <i class="ph-duotone ph-graph text-cyan-400"></i> Matriks Routing & Configuration Layout
           </h2>
           <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl leading-relaxed">
             Konfigurasi pemetaan operasional antar <strong>Line Produksi</strong>, <strong>Buffer Tank</strong>, dan <strong>Mixer</strong>.
           </p>
         </div>
+        </button>
       </div>
 
       <div class="glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl flex flex-col sm:flex-row gap-2.5 items-stretch sm:items-center justify-between">
         <div class="flex flex-col xs:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto">
           <div class="relative w-full xs:w-64 sm:w-72">
-            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <i class="ph-bold ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
             <input type="text" id="matrix-search" oninput="renderMatrixTable()" placeholder="Cari Line, Tank, Mixer..." class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-8 pr-3 py-2 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition">
           </div>
           <select id="matrix-filter-line" onchange="renderMatrixTable()" class="w-full xs:w-auto bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-cyan-500 transition truncate">
@@ -244,7 +376,7 @@
       <div class="glass-card rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
         <div class="p-3 sm:p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
           <div class="flex items-center gap-2">
-            <i class="fa-solid fa-network-wired text-cyan-400 text-sm sm:text-base"></i>
+            <i class="ph-duotone ph-share-network text-cyan-400 text-sm sm:text-base"></i>
             <h2 class="font-bold text-white text-sm sm:text-base">Tabel Pemetaan Matriks Line Produksi</h2>
           </div>
         </div>
@@ -269,116 +401,21 @@
       </div>
     </section>
 
-
-    <!-- ==================== TAB 2: DASHBOARD PRODUKSI ==================== -->
-    <section id="tab-dashboard" class="tab-content hidden space-y-4 sm:space-y-6">
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-4">
-        <div class="glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl relative overflow-hidden">
-          <div class="text-[10px] sm:text-xs font-medium text-slate-400 uppercase tracking-wider truncate">Total Line Active</div>
-          <div class="text-base sm:text-2xl font-bold font-mono text-white mt-0.5 sm:mt-1" id="stat-active-machines">0</div>
-          <div class="text-[10px] text-slate-500 sm:mt-1 truncate"><i class="fa-solid fa-microchip text-blue-400 mr-1"></i> Line Active</div>
-        </div>
-
-        <div class="glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl relative overflow-hidden">
-          <div class="text-[10px] sm:text-xs font-medium text-slate-400 uppercase tracking-wider truncate">Target Qty</div>
-          <div class="text-base sm:text-2xl font-bold font-mono text-blue-400 mt-0.5 sm:mt-1" id="stat-target-qty">0</div>
-          <div class="text-[10px] text-slate-500 sm:mt-1 truncate">Total Rencana</div>
-        </div>
-
-        <div class="glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl relative overflow-hidden">
-          <div class="text-[10px] sm:text-xs font-medium text-slate-400 uppercase tracking-wider truncate">Conf. Qty (OK)</div>
-          <div class="text-base sm:text-2xl font-bold font-mono text-emerald-400 mt-0.5 sm:mt-1" id="stat-conf-qty">0</div>
-          <div class="text-[10px] text-slate-500 sm:mt-1 truncate">Terkonfirmasi</div>
-        </div>
-
-        <div class="glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl relative overflow-hidden">
-          <div class="text-[10px] sm:text-xs font-medium text-slate-400 uppercase tracking-wider truncate">Del. Qty (Kirim)</div>
-          <div class="text-base sm:text-2xl font-bold font-mono text-indigo-400 mt-0.5 sm:mt-1" id="stat-del-qty">0</div>
-          <div class="text-[10px] text-slate-500 sm:mt-1 truncate">Sudah Terkirim</div>
-        </div>
-
-        <div class="glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl relative overflow-hidden">
-          <div class="text-[10px] sm:text-xs font-medium text-slate-400 uppercase tracking-wider truncate">Kekurangan</div>
-          <div class="text-base sm:text-2xl font-bold font-mono text-rose-400 mt-0.5 sm:mt-1" id="stat-shortage-qty">0</div>
-          <div class="text-[10px] text-slate-500 sm:mt-1 truncate">Sisa Target</div>
-        </div>
-
-        <div class="glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl relative overflow-hidden bg-gradient-to-br from-slate-900 to-blue-950/40 border-blue-500/20">
-          <div class="text-[10px] sm:text-xs font-medium text-slate-400 uppercase tracking-wider truncate">Avg Achievement</div>
-          <div class="text-base sm:text-2xl font-bold font-mono text-amber-400 mt-0.5 sm:mt-1" id="stat-avg-achievement">0%</div>
-          <div class="text-[10px] text-slate-400 sm:mt-1 truncate">Pencapaian Rata-Rata</div>
-        </div>
-      </div>
-
-      <div class="glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl flex flex-col md:flex-row gap-2.5 items-stretch md:items-center justify-between">
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full md:w-auto">
-          <div class="relative w-full sm:w-64">
-            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-            <input type="text" id="dash-search" oninput="renderDashboardTable()" placeholder="Cari line / produk..." class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-8 pr-3 py-2 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition">
-          </div>
-          <div class="grid grid-cols-2 gap-2 sm:flex sm:items-center">
-            <select id="dash-filter-machine" onchange="renderDashboardTable()" class="w-full sm:w-auto bg-slate-900/90 border border-slate-700/80 rounded-xl px-2.5 py-2 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-blue-500 transition truncate">
-              <option value="">Semua Line/Mesin</option>
-            </select>
-            <select id="dash-filter-status" onchange="renderDashboardTable()" class="w-full sm:w-auto bg-slate-900/90 border border-slate-700/80 rounded-xl px-2.5 py-2 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-blue-500 transition truncate">
-              <option value="">Status Achievement</option>
-              <option value="complete">Tercapai (≥ 100%)</option>
-              <option value="warning">Mendekati (80% - 99%)</option>
-              <option value="danger">Kurang (&lt; 80%)</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="glass-card rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
-        <div class="p-3 sm:p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-table-list text-blue-400 text-sm sm:text-base"></i>
-            <h2 class="font-bold text-white text-sm sm:text-base">Monitoring Batch Output Produksi</h2>
-          </div>
-          <span class="text-[11px] text-slate-400 font-mono" id="prod-record-count">0 items</span>
-        </div>
-
-        <div id="production-mobile-list" class="block md:hidden divide-y divide-slate-800/60"></div>
-
-        <div class="hidden md:block overflow-x-auto">
-          <table class="w-full text-left text-sm text-slate-300">
-            <thead class="bg-slate-900/90 text-slate-400 font-semibold text-xs uppercase tracking-wider border-b border-slate-800">
-              <tr>
-                <th class="py-3 px-3.5">Line Produksi</th>
-                <th class="py-3 px-3.5">Produk Code</th>
-                <th class="py-3 px-3.5">Deskripsi Produk</th>
-                <th class="py-3 px-3.5 text-right">Target</th>
-                <th class="py-3 px-3.5 text-right">Conf.</th>
-                <th class="py-3 px-3.5 text-right">Del.</th>
-                <th class="py-3 px-3.5 text-right">Hasil Output</th>
-                <th class="py-3 px-3.5 text-center">Unit</th>
-                <th class="py-3 px-3.5 text-right">Kurang</th>
-                <th class="py-3 px-3.5 text-center">Achievement</th>
-                <th class="py-3 px-3.5 text-center">Aksi</th>
-              </tr>
-            </thead>
-            <tbody id="production-tbody" class="divide-y divide-slate-800/60 font-mono"></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-
     <!-- ==================== TAB 3: MASTER PRODUK ==================== -->
     <section id="tab-material" class="tab-content hidden space-y-4 sm:space-y-6">
       <div class="glass-card p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950/30 to-slate-900 border border-indigo-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <div>
           <h2 class="text-base sm:text-xl font-bold text-white flex items-center gap-2">
-            <i class="fa-solid fa-boxes-stacked text-indigo-400"></i> Master Data Produk
+            <i class="ph-duotone ph-package text-indigo-400"></i> Master Data Produk
           </h2>
           <p class="text-xs text-slate-400 mt-0.5">Kelola katalog produk utama dan spesifikasi kemasan.</p>
         </div>
+        </button>
       </div>
 
       <div class="glass-card p-3 sm:p-4 rounded-xl sm:rounded-2xl flex flex-row items-center justify-between gap-3">
         <div class="relative flex-1 max-w-md">
-          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+          <i class="ph-bold ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
           <input type="text" id="mat-search" oninput="renderMaterialTable()" placeholder="Cari Kode atau Deskripsi Produk..." class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-8 pr-3 py-2 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition">
         </div>
         <span class="text-[11px] text-slate-400 font-mono shrink-0" id="mat-record-count">0 Records</span>
@@ -408,12 +445,11 @@
       </div>
     </section>
 
-
     <!-- ==================== TAB 4: EXPORT & IMPORT EXCEL ==================== -->
     <section id="tab-exim" class="tab-content hidden space-y-4 sm:space-y-6">
       <div class="glass-card p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-slate-900 via-emerald-950/30 to-slate-900 border border-emerald-500/20">
         <h2 class="text-base sm:text-xl font-bold text-white flex items-center gap-2">
-          <i class="fa-solid fa-gear text-emerald-400"></i> Export & Import Data Excel (.xlsx)
+          <i class="ph-duotone ph-gear-six text-emerald-400"></i> Export & Import Data Excel (.xlsx)
         </h2>
         <p class="text-xs text-slate-400 mt-1">Unduh laporan matriks layout, produksi, dan master produk ke Excel, atau sinkronkan data massal.</p>
       </div>
@@ -422,7 +458,7 @@
         <div class="glass-card p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-800 space-y-4">
           <div class="flex items-center gap-3 text-emerald-400">
             <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center font-bold text-base sm:text-lg shrink-0">
-              <i class="fa-solid fa-file-export"></i>
+              <i class="ph-duotone ph-file-arrow-up"></i>
             </div>
             <div>
               <h3 class="font-bold text-white text-sm sm:text-base">Export ke Excel</h3>
@@ -431,14 +467,14 @@
           </div>
 
           <button onclick="exportAllToExcel()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 active:scale-[0.98]">
-            <i class="fa-solid fa-download"></i> Export Full Workbook (Matriks + Produksi + Produk)
+            <i class="ph-duotone ph-download-simple"></i> Export Full Workbook (Matriks + Produksi + Produk)
           </button>
         </div>
 
         <div class="glass-card p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-800 space-y-4">
           <div class="flex items-center gap-3 text-blue-400">
             <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center font-bold text-base sm:text-lg shrink-0">
-              <i class="fa-solid fa-file-import"></i>
+              <i class="ph-duotone ph-file-arrow-down"></i>
             </div>
             <div>
               <h3 class="font-bold text-white text-sm sm:text-base">Import dari Excel</h3>
@@ -448,11 +484,45 @@
 
           <div class="border-2 border-dashed border-slate-700 hover:border-blue-500 rounded-xl p-4 text-center bg-slate-900/50 cursor-pointer transition relative group" id="drop-zone">
             <input type="file" id="excel-file-input" accept=".xlsx, .xls, .csv" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="handleFileSelect(event)">
-            <i class="fa-solid fa-cloud-arrow-up text-2xl sm:text-3xl text-slate-500 group-hover:text-blue-400 transition mb-1"></i>
+            <i class="ph-duotone ph-cloud-arrow-up text-2xl sm:text-3xl text-slate-500 group-hover:text-blue-400 transition mb-1"></i>
             <p class="text-xs sm:text-sm font-semibold text-slate-200 group-hover:text-blue-400 transition">Upload File Excel</p>
             <div id="file-name-display" class="mt-2 text-xs font-mono text-emerald-400 hidden font-bold truncate"></div>
           </div>
         </div>
+      </div>
+
+      <div class="glass-card p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-800 space-y-4" id="sync-card">
+        <div class="flex items-center gap-3 text-cyan-400">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center font-bold text-base sm:text-lg shrink-0">
+            <i class="ph-duotone ph-arrows-clockwise"></i>
+          </div>
+          <div class="min-w-0">
+            <h3 class="font-bold text-white text-sm sm:text-base">Sinkronisasi Otomatis Excel</h3>
+            <p class="text-[11px] text-slate-400">Hubungkan sekali, data otomatis diperbarui saat file Excel disimpan ulang.</p>
+          </div>
+        </div>
+
+        <div id="sync-status" class="text-xs font-mono rounded-xl border border-slate-800 bg-slate-950/60 px-3 py-2.5 text-slate-300 break-words">Belum terhubung ke file Excel.</div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <button id="sync-link-btn" onclick="linkExcelFile()" class="bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-2.5 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-2 active:scale-[0.98]">
+            <i class="ph-duotone ph-link-simple"></i> Hubungkan File Excel
+          </button>
+          <button id="sync-now-btn" onclick="syncNow(true)" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold py-2.5 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-2 active:scale-[0.98]">
+            <i class="ph-duotone ph-arrow-clockwise"></i> Sinkronkan Sekarang
+          </button>
+          <button id="sync-cache-btn" onclick="loadFromCachedExcel()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold py-2.5 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-2 active:scale-[0.98]">
+            <i class="ph-duotone ph-archive"></i> Muat dari Salinan Tersimpan
+          </button>
+          <button id="sync-unlink-btn" onclick="unlinkExcelFile()" class="bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 font-semibold py-2.5 px-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-2 active:scale-[0.98]">
+            <i class="ph-duotone ph-link-break"></i> Putuskan Tautan
+          </button>
+        </div>
+
+        <label class="flex items-start gap-2.5 text-xs text-slate-300 cursor-pointer bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+          <input type="checkbox" id="sync-auto-toggle" onchange="toggleAutoSync(this.checked)" class="accent-cyan-500 w-4 h-4 mt-0.5 shrink-0">
+          <span><span class="font-semibold text-white">Auto-update</span> — cek perubahan file tiap beberapa detik selama aplikasi terbuka.</span>
+        </label>
       </div>
 
       <div class="glass-card p-4 rounded-xl sm:rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-slate-900/40">
@@ -462,10 +532,10 @@
         </div>
         <div class="flex items-center gap-2">
           <button onclick="exportJSONBackup()" class="flex-1 sm:flex-none bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-2.5 rounded-xl text-xs font-semibold transition border border-slate-700 text-center active:scale-[0.98]">
-            <i class="fa-solid fa-code"></i> Backup JSON
+            <i class="ph-duotone ph-code"></i> Backup JSON
           </button>
           <button onclick="resetSystemData()" class="flex-1 sm:flex-none bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-center active:scale-[0.98]">
-            <i class="fa-solid fa-trash-can"></i> Bersihkan Database
+            <i class="ph-duotone ph-trash"></i> Bersihkan Data
           </button>
         </div>
       </div>
@@ -475,8 +545,8 @@
 
   <!-- FAB BUTTON -->
   <div class="fixed bottom-20 md:bottom-8 right-4 xs:right-6 z-50 flex items-center justify-center">
-    <button id="fab-main-btn" onclick="handleFabClick()" class="text-cyan-400 hover:text-cyan-300 drop-shadow-[0_0_16px_rgba(6,182,212,0.7)] active:scale-95 transition-all duration-200 p-1">
-      <i id="fab-icon" class="fa-solid fa-diagram-project text-4xl sm:text-5xl"></i>
+    <button id="fab-main-btn" onclick="handleFabClick()" class="text-blue-400 hover:text-blue-300 drop-shadow-[0_0_16px_rgba(59,130,246,0.7)] active:scale-95 transition-all duration-200 p-1">
+      <i id="fab-icon" class="ph-duotone ph-factory text-4xl sm:text-5xl"></i>
     </button>
   </div>
 
@@ -485,9 +555,9 @@
     <div class="glass-card w-full max-w-2xl rounded-t-2xl sm:rounded-2xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col max-h-[88vh] sm:max-h-[90vh]">
       <div class="px-4 sm:px-6 py-3 sm:py-3.5 border-b border-slate-800 flex items-center justify-between bg-slate-900/90 shrink-0">
         <h3 id="modal-matrix-title" class="font-bold text-white text-xs sm:text-base flex items-center gap-2 truncate">
-          <i class="fa-solid fa-diagram-project text-cyan-400"></i> Konfigurasi Matriks Routing Line
+          <i class="ph-duotone ph-graph text-cyan-400"></i> Konfigurasi Matriks Routing Line
         </h3>
-        <button onclick="closeMatrixModal()" class="text-slate-400 hover:text-white p-2 transition"><i class="fa-solid fa-xmark text-lg"></i></button>
+        <button onclick="closeMatrixModal()" class="text-slate-400 hover:text-white p-2 transition"><i class="ph-bold ph-x text-lg"></i></button>
       </div>
 
       <form id="form-matrix" onsubmit="saveMatrix(event)" class="p-4 sm:p-6 space-y-4 overflow-y-auto flex-1">
@@ -498,13 +568,13 @@
             <label class="block text-[11px] font-semibold text-slate-300 uppercase">Pilih Master Line <span class="text-rose-400">*</span></label>
             <div class="flex items-center gap-1">
               <button type="button" onclick="openAddLineInput()" class="text-[10px] sm:text-[11px] font-semibold text-cyan-400 hover:text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-2 py-1 rounded-lg transition flex items-center gap-1">
-                <i class="fa-solid fa-plus text-[10px]"></i> Tambah
+                <i class="ph-bold ph-plus text-[10px]"></i> Tambah
               </button>
               <button type="button" onclick="editSelectedLine()" class="text-[10px] sm:text-[11px] font-semibold text-amber-400 hover:text-amber-300 bg-amber-950/60 border border-amber-500/30 px-2 py-1 rounded-lg transition flex items-center gap-1">
-                <i class="fa-solid fa-pen-to-square text-[10px]"></i> Edit
+                <i class="ph-duotone ph-pencil-simple-line text-[10px]"></i> Edit
               </button>
               <button type="button" onclick="deleteSelectedLine()" class="text-[10px] sm:text-[11px] font-semibold text-rose-400 hover:text-rose-300 bg-rose-950/60 border border-rose-500/30 px-2 py-1 rounded-lg transition flex items-center gap-1">
-                <i class="fa-solid fa-trash-can text-[10px]"></i> Hapus
+                <i class="ph-duotone ph-trash text-[10px]"></i> Hapus
               </button>
             </div>
           </div>
@@ -515,10 +585,10 @@
 
           <div id="line-custom-container" class="hidden p-3 rounded-xl bg-slate-950 border border-cyan-500/40 space-y-2 mt-2">
             <div class="text-[11px] font-bold text-cyan-400 flex items-center gap-1.5" id="line-custom-title">
-              <i class="fa-solid fa-square-plus"></i> Tambah Master Line Manual
+              <i class="ph-duotone ph-plus-circle"></i> Tambah Master Line Manual
             </div>
             <div class="flex flex-col sm:flex-row gap-2">
-              <input type="text" id="line-custom-input" placeholder="Nama Line (Contoh: Line 43)..." class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-cyan-500">
+              <input type="text" id="line-custom-input" placeholder="Nama Line (Contoh: Line 01)..." class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-cyan-500">
               <div class="flex gap-2">
                 <button type="button" onclick="saveCustomLine()" class="flex-1 sm:flex-none bg-cyan-600 hover:bg-cyan-500 text-white font-bold px-3 py-2 rounded-lg text-xs transition">Simpan</button>
                 <button type="button" onclick="cancelCustomLine()" class="flex-1 sm:flex-none bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-2 rounded-lg text-xs transition">Batal</button>
@@ -533,7 +603,7 @@
         </div>
 
         <div>
-          <label class="block text-[11px] font-semibold text-slate-300 uppercase mb-1">Pilih Buffer Tank Digunakan (Buffer Tank 1 - 40)</label>
+          <label class="block text-[11px] font-semibold text-slate-300 uppercase mb-1">Pilih Buffer Tank Digunakan (1 - 40)</label>
           <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 max-h-36 overflow-y-auto grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-1.5" id="buffer-tank-checkboxes"></div>
         </div>
 
@@ -564,9 +634,9 @@
     <div class="glass-card w-full max-w-xl rounded-t-2xl sm:rounded-2xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col max-h-[88vh] sm:max-h-[90vh]">
       <div class="px-4 sm:px-6 py-3 sm:py-3.5 border-b border-slate-800 flex items-center justify-between bg-slate-900/90 shrink-0">
         <h3 id="modal-prod-title" class="font-bold text-white text-xs sm:text-base flex items-center gap-2 truncate">
-          <i class="fa-solid fa-gears text-blue-400"></i> Input Data Batch Produksi
+          <i class="ph-duotone ph-factory text-blue-400"></i> Input Data Batch Produksi
         </h3>
-        <button onclick="closeProductionModal()" class="text-slate-400 hover:text-white p-2 transition"><i class="fa-solid fa-xmark text-lg"></i></button>
+        <button onclick="closeProductionModal()" class="text-slate-400 hover:text-white p-2 transition"><i class="ph-bold ph-x text-lg"></i></button>
       </div>
 
       <form id="form-production" onsubmit="saveProduction(event)" class="p-4 sm:p-6 space-y-3.5 overflow-y-auto flex-1">
@@ -645,9 +715,9 @@
     <div class="glass-card w-full max-w-2xl rounded-t-2xl sm:rounded-2xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col max-h-[88vh] sm:max-h-[90vh]">
       <div class="px-4 sm:px-6 py-3 sm:py-3.5 border-b border-slate-800 flex items-center justify-between bg-slate-900/90 shrink-0">
         <h3 id="modal-mat-title" class="font-bold text-white text-xs sm:text-base flex items-center gap-2 truncate">
-          <i class="fa-solid fa-boxes-stacked text-indigo-400"></i> Form Master Produk
+          <i class="ph-duotone ph-package text-indigo-400"></i> Form Master Produk
         </h3>
-        <button onclick="closeMaterialModal()" class="text-slate-400 hover:text-white p-2 transition"><i class="fa-solid fa-xmark text-lg"></i></button>
+        <button onclick="closeMaterialModal()" class="text-slate-400 hover:text-white p-2 transition"><i class="ph-bold ph-x text-lg"></i></button>
       </div>
 
       <form id="form-material" onsubmit="saveMaterial(event)" class="p-4 sm:p-6 space-y-3.5 overflow-y-auto flex-1">
@@ -678,12 +748,12 @@
 
           <div>
             <label class="block text-[10px] sm:text-[11px] font-semibold text-slate-300 uppercase mb-1">1 Dus (kg)</label>
-            <input type="number" step="any" min="0" id="mat-dus" required value="0.0" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-2 text-xs sm:text-sm text-slate-100 font-mono text-right focus:outline-none focus:border-indigo-500 transition">
+            <input type="number" step="0.1" min="0" id="mat-dus" required value="0.0" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-2 text-xs sm:text-sm text-slate-100 font-mono text-right focus:outline-none focus:border-indigo-500 transition">
           </div>
 
           <div>
             <label class="block text-[10px] sm:text-[11px] font-semibold text-slate-300 uppercase mb-1">1 Reel (cs)</label>
-            <input type="number" step="any" min="0" id="mat-reel-cs" required value="0.0" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-2 text-xs sm:text-sm text-slate-100 font-mono text-right focus:outline-none focus:border-indigo-500 transition">
+            <input type="number" step="0.1" min="0" id="mat-reel-cs" required value="0.0" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-2.5 py-2 text-xs sm:text-sm text-slate-100 font-mono text-right focus:outline-none focus:border-indigo-500 transition">
           </div>
 
           <div>
@@ -710,7 +780,7 @@
 
   <!-- ==================== JAVASCRIPT LOGIC ENGINE ==================== -->
   <script>
-    // --- HELPER: escape HTML agar data pengguna/import tidak merusak tampilan atau disuntik script ---
+    // --- HELPER: Escape HTML ---
     const esc = (v) => String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
     // --- PWA & SERVICE WORKER ENGINE ---
@@ -740,7 +810,7 @@
       if (banner) banner.classList.add('hidden');
     }
 
-    // Register Inline Virtual Service Worker
+    // Register Inline Service Worker
     if ('serviceWorker' in navigator) {
       const swCode = `
         self.addEventListener('install', (e) => self.skipWaiting());
@@ -754,20 +824,19 @@
 
     // --- STORAGE KEYS ---
     const STORAGE_KEYS = {
-      PRODUCTION: 'prodmon_production_v3',
-      MATERIAL: 'prodmon_material_v3',
-      MATRIX: 'prodmon_matrix_v3',
-      MASTER_LINES: 'prodmon_master_lines_v3'
+      PRODUCTION: 'prodmon_production_v3.8',
+      MATERIAL: 'prodmon_material_v3.8',
+      MATRIX: 'prodmon_matrix_v3.8',
+      MASTER_LINES: 'prodmon_master_lines_v3.8'
     };
 
     const BRAND_CHECKBOXES = ["Molto", "Super pell", "Rinso", "Trika", "Sunlight", "Lifebuoy", "CIP"];
 
-    const SEED_MATERIALS = [
-      { id: 'PRD-001', code: 'MLT-720', desc: 'Molto Pelembut Pakaian 720ml', qty: 12, berat: 720, dus: 8.64, reelCs: 120.0, reelM: 1500, palletCs: 48 },
-      { id: 'PRD-002', code: 'SPL-770', desc: 'Super Pell Pembersih Lantai 770ml', qty: 12, berat: 770, dus: 9.24, reelCs: 100.0, reelM: 1200, palletCs: 40 }
-    ];
+    // KOSONGKAN DEFAULT SEED / MASTER LINES (READY TO USE FOR USER)
+    const SEED_MATERIALS = [];
     const SEED_MATRIX = [];
     const SEED_PRODUCTIONS = [];
+    const DEFAULT_MASTER_LINES = []; // Master lines default dikosongkan
 
     const MASTER_MIXERS = [
       { id: 'M-1', name: 'Mixer 1', capacity: '10 ton' },
@@ -784,18 +853,14 @@
 
     const MASTER_BUFFER_TANKS = Array.from({ length: 40 }, (_, i) => ({
       id: `BT-${i + 1}`,
-      name: `Buffer tank ${i + 1}`
+      name: `BT ${i + 1}`
     }));
-
-    const DEFAULT_MASTER_LINES = [];
-    for (let i = 1; i <= 8; i++) { DEFAULT_MASTER_LINES.push(`Akash ${i}`); }
-    for (let i = 2; i <= 42; i++) { DEFAULT_MASTER_LINES.push(`LOFPOU ${i}`); }
 
     let materials = [];
     let productions = [];
     let matrixData = [];
     let masterLines = [];
-    let currentTab = 'matrix';
+    let currentTab = 'dashboard';
     let editingLineOriginalName = null;
 
     // --- INITIALIZATION ---
@@ -807,12 +872,13 @@
       buildMixerCheckboxes();
       populateLineDropdowns();
       populateDashFilterMachine();
-      renderMatrixTable();
+      populateProdMaterialDropdown();
       renderDashboardTable();
+      renderMatrixTable();
       renderMaterialTable();
       updateFabButtonUI();
+      initExcelSync();
 
-      // Enter pada input Master Line = simpan line (bukan submit form matriks)
       document.getElementById('line-custom-input').addEventListener('keydown', (e) => {
         if (e.key === 'Enter') { e.preventDefault(); saveCustomLine(); }
       });
@@ -830,22 +896,19 @@
       saveMasterLines();
     }
 
-    // Baca data tersimpan dengan aman: data rusak tidak membuat aplikasi mati, salinan mentahnya disimpan dulu.
     function readStored(key, fallback, itemType) {
       try {
         const raw = localStorage.getItem(key);
         if (raw === null) return fallback.slice();
         try {
           const parsed = JSON.parse(raw);
-          if (!Array.isArray(parsed)) throw new Error('Format data bukan array');
+          if (!Array.isArray(parsed)) throw new Error('Format bukan array');
           return parsed.filter(x => typeof x === itemType && x !== null);
         } catch (err) {
-          console.error('Data tersimpan rusak untuk', key, err);
-          try { localStorage.setItem(key + '_corrupt_backup', raw); } catch (e) { /* abaikan */ }
+          console.error('Data rusak:', key, err);
           return fallback.slice();
         }
       } catch (err) {
-        console.error('localStorage tidak tersedia', err);
         return fallback.slice();
       }
     }
@@ -855,8 +918,7 @@
         localStorage.setItem(key, JSON.stringify(data));
         return true;
       } catch (err) {
-        console.error('Gagal menyimpan', key, err);
-        showToast('Gagal Menyimpan', 'Penyimpanan lokal penuh/tidak tersedia. Segera Backup JSON.', 'danger');
+        showToast('Gagal Menyimpan', 'Penyimpanan lokal penuh. Lakukan Backup JSON.', 'danger');
         return false;
       }
     }
@@ -866,8 +928,6 @@
     function saveMatrixData() { persist(STORAGE_KEYS.MATRIX, matrixData); }
     function saveMasterLines() { persist(STORAGE_KEYS.MASTER_LINES, masterLines); }
 
-    // Set nilai <select>; jika nilainya tidak ada di opsi (mis. line sudah dihapus dari master), opsi ditambahkan
-    // agar data lama tetap tampil dan tidak tersimpan kosong.
     function setSelectValue(select, value) {
       if (value && !Array.from(select.options).some(o => o.value === value)) select.add(new Option(value, value));
       select.value = value || '';
@@ -878,14 +938,14 @@
       const container = document.getElementById('toast-container');
       const toast = document.createElement('div');
       
-      let borderCol = 'border-blue-500/50', iconCol = 'text-blue-400', icon = 'fa-circle-info';
-      if (type === 'success') { borderCol = 'border-emerald-500/50'; iconCol = 'text-emerald-400'; icon = 'fa-circle-check'; }
-      else if (type === 'warning') { borderCol = 'border-amber-500/50'; iconCol = 'text-amber-400'; icon = 'fa-triangle-exclamation'; }
-      else if (type === 'danger') { borderCol = 'border-rose-500/50'; iconCol = 'text-rose-400'; icon = 'fa-circle-xmark'; }
+      let borderCol = 'border-blue-500/50', iconCol = 'text-blue-400', icon = 'ph-duotone ph-info';
+      if (type === 'success') { borderCol = 'border-emerald-500/50'; iconCol = 'text-emerald-400'; icon = 'ph-duotone ph-check-circle'; }
+      else if (type === 'warning') { borderCol = 'border-amber-500/50'; iconCol = 'text-amber-400'; icon = 'ph-duotone ph-warning'; }
+      else if (type === 'danger') { borderCol = 'border-rose-500/50'; iconCol = 'text-rose-400'; icon = 'ph-duotone ph-x-circle'; }
 
       toast.className = `glass-card p-3 rounded-xl border ${borderCol} shadow-2xl flex items-center gap-3 pointer-events-auto max-w-sm transition-all duration-300`;
       toast.innerHTML = `
-        <i class="fa-solid ${icon} ${iconCol} text-xl shrink-0"></i>
+        <i class="${icon} ${iconCol} text-xl shrink-0"></i>
         <div class="flex-1 min-w-0">
           <div class="text-xs font-bold text-white">${esc(title)}</div>
           <div class="text-[11px] text-slate-300 truncate">${esc(message)}</div>
@@ -917,26 +977,26 @@
       const fabIcon = document.getElementById('fab-icon');
       if (!fabBtn || !fabIcon) return;
 
-      if (currentTab === 'matrix') {
-        fabBtn.classList.remove('hidden');
-        fabBtn.className = "text-cyan-400 hover:text-cyan-300 drop-shadow-[0_0_16px_rgba(6,182,212,0.7)] active:scale-95 transition-all duration-200 p-1";
-        fabIcon.className = "fa-solid fa-diagram-project text-4xl sm:text-5xl";
-      } else if (currentTab === 'dashboard') {
+      if (currentTab === 'dashboard') {
         fabBtn.classList.remove('hidden');
         fabBtn.className = "text-blue-400 hover:text-blue-300 drop-shadow-[0_0_16px_rgba(59,130,246,0.7)] active:scale-95 transition-all duration-200 p-1";
-        fabIcon.className = "fa-solid fa-gears text-4xl sm:text-5xl";
+        fabIcon.className = "ph-duotone ph-factory text-4xl sm:text-5xl";
+      } else if (currentTab === 'matrix') {
+        fabBtn.classList.remove('hidden');
+        fabBtn.className = "text-cyan-400 hover:text-cyan-300 drop-shadow-[0_0_16px_rgba(6,182,212,0.7)] active:scale-95 transition-all duration-200 p-1";
+        fabIcon.className = "ph-duotone ph-graph text-4xl sm:text-5xl";
       } else if (currentTab === 'material') {
         fabBtn.classList.remove('hidden');
         fabBtn.className = "text-indigo-400 hover:text-indigo-300 drop-shadow-[0_0_16px_rgba(99,102,241,0.7)] active:scale-95 transition-all duration-200 p-1";
-        fabIcon.className = "fa-solid fa-boxes-stacked text-4xl sm:text-5xl";
+        fabIcon.className = "ph-duotone ph-package text-4xl sm:text-5xl";
       } else {
         fabBtn.classList.add('hidden');
       }
     }
 
     function handleFabClick() {
-      if (currentTab === 'matrix') openMatrixModal();
-      else if (currentTab === 'dashboard') openProductionModal();
+      if (currentTab === 'dashboard') openProductionModal();
+      else if (currentTab === 'matrix') openMatrixModal();
       else if (currentTab === 'material') openMaterialModal();
     }
 
@@ -955,7 +1015,7 @@
         activeBtn.classList.remove('text-slate-400', 'hover:text-slate-200', 'hover:bg-slate-800/50');
       }
 
-      ['matrix', 'dashboard', 'material', 'exim'].forEach(t => {
+      ['dashboard', 'matrix', 'material', 'exim'].forEach(t => {
         const mNav = document.getElementById(`mob-nav-${t}`);
         if(mNav) {
           if(t === tabId) mNav.className = "flex flex-col items-center gap-1 px-3 py-1.5 rounded-xl text-blue-400 font-bold transition-all";
@@ -1043,10 +1103,21 @@
       if (activeLines.includes(currentSelected)) dashFilterSelect.value = currentSelected;
     }
 
+    function populateProdMaterialDropdown() {
+      const select = document.getElementById('prod-material-select');
+      if (!select) return;
+      const currentVal = select.value;
+      select.innerHTML = '<option value="">-- Pilih Produk --</option>';
+      materials.forEach(m => {
+        select.add(new Option(`${m.code} - ${m.desc}`, m.code));
+      });
+      select.value = currentVal;
+    }
+
     // --- LINE MANAGEMENT ---
     function openAddLineInput() {
       editingLineOriginalName = null;
-      document.getElementById('line-custom-title').innerHTML = `<i class="fa-solid fa-square-plus"></i> Tambah Master Line Manual`;
+      document.getElementById('line-custom-title').innerHTML = `<i class="ph-duotone ph-plus-circle"></i> Tambah Master Line Manual`;
       document.getElementById('line-custom-input').value = '';
       document.getElementById('line-custom-container').classList.remove('hidden');
       document.getElementById('line-custom-input').focus();
@@ -1060,7 +1131,7 @@
         return;
       }
       editingLineOriginalName = selected;
-      document.getElementById('line-custom-title').innerHTML = `<i class="fa-solid fa-pen-to-square"></i> Edit Nama Line: "${esc(selected)}"`;
+      document.getElementById('line-custom-title').innerHTML = `<i class="ph-duotone ph-pencil-simple-line"></i> Edit Nama Line: "${esc(selected)}"`;
       document.getElementById('line-custom-input').value = selected;
       document.getElementById('line-custom-container').classList.remove('hidden');
       document.getElementById('line-custom-input').focus();
@@ -1125,7 +1196,245 @@
       }
     }
 
-    // --- RENDER TAB 1: MATRIKS ---
+    // --- HELPER CALCULATIONS ---
+    const fmt = (num) => Number(num || 0).toLocaleString('id-ID');
+    const fmtDec1 = (num) => Number(num || 0).toLocaleString('id-ID', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    
+    function calcShortage(target, conf) { const diff = Number(target || 0) - Number(conf || 0); return diff > 0 ? diff : 0; }
+    function calcOutputVal(del, conf) { return Number(del || 0) - Number(conf || 0); }
+    function calcAchievement(target, conf) { const t = Number(target || 0); const c = Number(conf || 0); return t <= 0 ? 0 : (c / t) * 100; }
+    function getMaterialDesc(code) { const item = materials.find(m => m.code === code); return item ? item.desc : '-'; }
+
+    // --- RENDER TAB 1: DASHBOARD PRODUKSI ---
+    function renderDashboardTable() {
+      const search = (document.getElementById('dash-search').value || '').toLowerCase();
+      const filterMachine = document.getElementById('dash-filter-machine').value;
+      const filterStatus = document.getElementById('dash-filter-status').value;
+
+      const tbody = document.getElementById('production-tbody');
+      const mobileList = document.getElementById('production-mobile-list');
+      const visualContainer = document.getElementById('dash-visual-bars');
+      
+      tbody.innerHTML = ''; mobileList.innerHTML = ''; visualContainer.innerHTML = '';
+
+      let totalTarget = 0, totalConf = 0, totalDel = 0, totalShortage = 0, sumAchievement = 0;
+      let uniqueMachines = new Set();
+      let machinePerfMap = {};
+
+      const filtered = productions.filter(p => {
+        const matDesc = String(getMaterialDesc(p.materialCode)).toLowerCase();
+        const matchSearch = String(p.mesin || '').toLowerCase().includes(search) || String(p.materialCode || '').toLowerCase().includes(search) || matDesc.includes(search);
+        const matchMachine = !filterMachine || p.mesin === filterMachine;
+        
+        const ach = calcAchievement(p.targetQty, p.confQty);
+        let matchStatus = true;
+        if (filterStatus === 'complete') matchStatus = ach >= 100;
+        else if (filterStatus === 'warning') matchStatus = ach >= 80 && ach < 100;
+        else if (filterStatus === 'danger') matchStatus = ach < 80;
+
+        return matchSearch && matchMachine && matchStatus;
+      });
+
+      filtered.forEach(p => {
+        uniqueMachines.add(p.mesin);
+        const shortage = calcShortage(p.targetQty, p.confQty);
+        const outputVal = calcOutputVal(p.delQty, p.confQty);
+        const ach = calcAchievement(p.targetQty, p.confQty);
+
+        totalTarget += Number(p.targetQty || 0);
+        totalConf += Number(p.confQty || 0);
+        totalDel += Number(p.delQty || 0);
+        totalShortage += shortage;
+        sumAchievement += ach;
+
+        // Grouping data untuk visual progress bar per machine
+        if (!machinePerfMap[p.mesin]) {
+          machinePerfMap[p.mesin] = { target: 0, conf: 0 };
+        }
+        machinePerfMap[p.mesin].target += Number(p.targetQty || 0);
+        machinePerfMap[p.mesin].conf += Number(p.confQty || 0);
+
+        let achBadgeClass = ach >= 100 ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : (ach >= 80 ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20');
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-800/40 transition duration-150';
+        tr.innerHTML = `
+          <td class="py-3 px-3.5 font-sans font-semibold text-white truncate"><i class="ph-duotone ph-factory text-blue-400 mr-1.5"></i>${esc(p.mesin)}</td>
+          <td class="py-3 px-3.5 font-bold text-blue-400">${esc(p.materialCode)}</td>
+          <td class="py-3 px-3.5 font-sans text-slate-300 text-xs">${esc(getMaterialDesc(p.materialCode))}</td>
+          <td class="py-3 px-3.5 text-right">${fmt(p.targetQty)}</td>
+          <td class="py-3 px-3.5 text-right text-emerald-400 font-bold">${fmt(p.confQty)}</td>
+          <td class="py-3 px-3.5 text-right text-indigo-400">${fmt(p.delQty)}</td>
+          <td class="py-3 px-3.5 text-right text-slate-300 font-mono">${fmt(outputVal)}</td>
+          <td class="py-3 px-3.5 text-center font-sans"><span class="px-2 py-0.5 text-[10px] rounded bg-slate-800 text-slate-300">${esc(p.unit || 'Pcs')}</span></td>
+          <td class="py-3 px-3.5 text-right text-rose-400 font-bold">${fmt(shortage)}</td>
+          <td class="py-3 px-3.5 text-center"><span class="px-2 py-0.5 rounded-full text-xs font-bold border ${achBadgeClass}">${ach.toFixed(1)}%</span></td>
+          <td class="py-3 px-3.5 text-center font-sans">
+            <div class="flex items-center justify-center gap-1.5">
+              <button onclick="editProduction('${p.id}')" class="text-slate-400 hover:text-blue-400 p-1.5 transition" aria-label="Edit"><i class="ph-duotone ph-pencil-simple-line"></i></button>
+              <button onclick="deleteProduction('${p.id}')" class="text-slate-400 hover:text-rose-400 p-1.5 transition" aria-label="Hapus"><i class="ph-duotone ph-trash"></i></button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+
+        const mCard = document.createElement('div');
+        mCard.className = 'p-3.5 space-y-2.5 bg-slate-900/40';
+        mCard.innerHTML = `
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <div class="font-bold text-white text-sm">${esc(p.mesin)}</div>
+              <div class="text-xs font-mono font-bold text-blue-400 mt-0.5">${esc(p.materialCode)}</div>
+              <div class="text-[11px] text-slate-400 line-clamp-1">${esc(getMaterialDesc(p.materialCode))}</div>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-xs font-bold border shrink-0 ${achBadgeClass}">${ach.toFixed(1)}%</span>
+          </div>
+          <div class="grid grid-cols-5 gap-1 bg-slate-950/60 p-2 rounded-xl text-center text-[10px] font-mono border border-slate-800/80">
+            <div><div class="text-[8px] text-slate-500 uppercase font-sans">Target</div><div class="text-slate-200 font-medium">${fmt(p.targetQty)}</div></div>
+            <div><div class="text-[8px] text-emerald-500 uppercase font-sans">Conf.</div><div class="text-emerald-400 font-bold">${fmt(p.confQty)}</div></div>
+            <div><div class="text-[8px] text-indigo-500 uppercase font-sans">Del.</div><div class="text-indigo-300">${fmt(p.delQty)}</div></div>
+            <div><div class="text-[8px] text-slate-500 uppercase font-sans">Output</div><div class="text-slate-200 font-mono">${fmt(outputVal)}</div></div>
+            <div><div class="text-[8px] text-rose-500 uppercase font-sans">Kurang</div><div class="text-rose-400 font-bold">${fmt(shortage)}</div></div>
+          </div>
+          <div class="flex items-center justify-between text-xs pt-1">
+            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">${esc(p.unit || 'Pcs')}</span>
+            <div class="flex justify-end gap-2">
+              <button onclick="editProduction('${p.id}')" class="text-blue-400 text-xs font-semibold flex items-center gap-1.5 py-1 px-2 rounded bg-blue-950/40 border border-blue-800/40"><i class="ph-duotone ph-pencil-simple-line"></i> Edit</button>
+              <button onclick="deleteProduction('${p.id}')" class="text-rose-400 text-xs font-semibold flex items-center gap-1.5 py-1 px-2 rounded bg-rose-950/40 border border-rose-800/40"><i class="ph-duotone ph-trash"></i> Hapus</button>
+            </div>
+          </div>
+        `;
+        mobileList.appendChild(mCard);
+      });
+
+      // Render Visual Bars
+      Object.keys(machinePerfMap).forEach(mName => {
+        const item = machinePerfMap[mName];
+        const pct = item.target > 0 ? Math.min(100, Math.round((item.conf / item.target) * 100)) : 0;
+        let barColor = pct >= 100 ? 'bg-emerald-500' : (pct >= 80 ? 'bg-amber-500' : 'bg-rose-500');
+
+        const barDiv = document.createElement('div');
+        barDiv.className = 'space-y-1';
+        barDiv.innerHTML = `
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-bold text-white text-[11px]">${esc(mName)}</span>
+            <span class="font-mono text-[10px] text-slate-400">${fmt(item.conf)} / ${fmt(item.target)} (${pct}%)</span>
+          </div>
+          <div class="w-full h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
+            <div class="h-full ${barColor} transition-all duration-500 rounded-full" style="width: ${pct}%"></div>
+          </div>
+        `;
+        visualContainer.appendChild(barDiv);
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="11" class="py-12 text-center text-slate-500 font-sans">Belum ada catatan produksi. Gunakan tombol + untuk rekam batch baru.</td></tr>`;
+        mobileList.innerHTML = `<div class="p-8 text-center text-xs text-slate-500">Belum ada data produksi.</div>`;
+        visualContainer.innerHTML = `<div class="text-xs text-slate-500 text-center py-4">Belum ada visualisasi data.</div>`;
+      }
+
+      document.getElementById('stat-active-machines').innerText = uniqueMachines.size;
+      document.getElementById('stat-target-qty').innerText = fmt(totalTarget);
+      document.getElementById('stat-conf-qty').innerText = fmt(totalConf);
+      document.getElementById('stat-del-qty').innerText = fmt(totalDel);
+      document.getElementById('stat-shortage-qty').innerText = fmt(totalShortage);
+      const avgAch = filtered.length > 0 ? (sumAchievement / filtered.length) : 0;
+      document.getElementById('stat-avg-achievement').innerText = avgAch.toFixed(1) + '%';
+      document.getElementById('prod-record-count').innerText = `${filtered.length} items`;
+      document.getElementById('dash-chart-summary').innerText = `${uniqueMachines.size} Line Beroperasi`;
+    }
+
+    function openProductionModal(id = null) {
+      document.getElementById('form-production').reset();
+      document.getElementById('prod-id').value = '';
+      document.getElementById('prod-mat-desc').value = '';
+      document.getElementById('modal-prod-title').innerHTML = `<i class="ph-duotone ph-factory text-blue-400"></i> Input Data Batch Produksi`;
+
+      populateLineDropdowns();
+      populateProdMaterialDropdown();
+
+      if (id) {
+        const p = productions.find(x => x.id === id);
+        if (p) {
+          document.getElementById('prod-id').value = p.id;
+          setSelectValue(document.getElementById('prod-mesin-select'), p.mesin);
+          setSelectValue(document.getElementById('prod-material-select'), p.materialCode);
+          autoFillMaterialDetails();
+
+          document.getElementById('prod-target-qty').value = p.targetQty || 0;
+          document.getElementById('prod-conf-qty').value = p.confQty || 0;
+          document.getElementById('prod-del-qty').value = p.delQty || 0;
+          document.getElementById('prod-unit').value = p.unit || 'Pcs';
+          calcProdAchievement();
+
+          document.getElementById('modal-prod-title').innerHTML = `<i class="ph-duotone ph-pencil-simple-line text-blue-400"></i> Edit Data Batch Produksi`;
+        }
+      }
+      document.getElementById('modal-production').classList.remove('hidden');
+    }
+
+    function closeProductionModal() { document.getElementById('modal-production').classList.add('hidden'); }
+
+    function autoFillMaterialDetails() {
+      const code = document.getElementById('prod-material-select').value;
+      const descInput = document.getElementById('prod-mat-desc');
+      descInput.value = getMaterialDesc(code);
+    }
+
+    function calcProdAchievement() {
+      const target = Number(document.getElementById('prod-target-qty').value || 0);
+      const conf = Number(document.getElementById('prod-conf-qty').value || 0);
+      const del = Number(document.getElementById('prod-del-qty').value || 0);
+
+      const output = del - conf;
+      const shortage = target - conf > 0 ? target - conf : 0;
+      const ach = target <= 0 ? 0 : (conf / target) * 100;
+
+      document.getElementById('prod-output-qty').value = fmt(output);
+      document.getElementById('prod-shortage').value = fmt(shortage);
+      document.getElementById('prod-achievement').value = ach.toFixed(1) + '%';
+    }
+
+    function saveProduction(e) {
+      e.preventDefault();
+      const id = document.getElementById('prod-id').value;
+      const mesin = document.getElementById('prod-mesin-select').value;
+      const materialCode = document.getElementById('prod-material-select').value;
+      const targetQty = Number(document.getElementById('prod-target-qty').value || 0);
+      const confQty = Number(document.getElementById('prod-conf-qty').value || 0);
+      const delQty = Number(document.getElementById('prod-del-qty').value || 0);
+      const unit = document.getElementById('prod-unit').value || 'Pcs';
+
+      if (!mesin) { showToast('Peringatan', 'Pilih Line Produksi', 'warning'); return; }
+      if (!materialCode) { showToast('Peringatan', 'Pilih Produk', 'warning'); return; }
+
+      if (id) {
+        const index = productions.findIndex(x => x.id === id);
+        if (index !== -1) productions[index] = { id, mesin, materialCode, targetQty, confQty, delQty, unit };
+      } else {
+        const newId = 'PRD-REC-' + Date.now().toString().slice(-6);
+        productions.unshift({ id: newId, mesin, materialCode, targetQty, confQty, delQty, unit });
+      }
+
+      saveProductions();
+      populateDashFilterMachine();
+      renderDashboardTable();
+      closeProductionModal();
+      showToast('Berhasil', 'Data produksi berhasil disimpan', 'success');
+    }
+
+    function editProduction(id) { openProductionModal(id); }
+    function deleteProduction(id) {
+      if (confirm('Hapus catatan produksi ini?')) {
+        productions = productions.filter(p => p.id !== id);
+        saveProductions();
+        populateDashFilterMachine();
+        renderDashboardTable();
+        showToast('Dihapus', 'Catatan produksi berhasil dihapus', 'danger');
+      }
+    }
+
+    // --- RENDER TAB 2: MATRIKS LAYOUT ---
     function renderMatrixTable() {
       const search = (document.getElementById('matrix-search').value || '').toLowerCase();
       const filterLine = document.getElementById('matrix-filter-line').value;
@@ -1133,8 +1442,7 @@
       const tbody = document.getElementById('matrix-tbody');
       const mobileList = document.getElementById('matrix-mobile-list');
 
-      tbody.innerHTML = '';
-      mobileList.innerHTML = '';
+      tbody.innerHTML = ''; mobileList.innerHTML = '';
 
       const filtered = matrixData.filter(m => {
         const prodString = Array.isArray(m.product) ? m.product.join(' ') : String(m.product || '');
@@ -1150,12 +1458,12 @@
         const prodArr = (Array.isArray(m.product) ? m.product : [m.product]).filter(Boolean);
         const prodBadges = prodArr.map(p => `<span class="inline-block px-2 py-0.5 rounded bg-blue-500/10 text-blue-300 border border-blue-500/20 text-xs font-bold mr-1 mb-1">${esc(p)}</span>`).join('');
         const tanksBadges = (m.bufferTanks || []).map(bt => `<span class="inline-block bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[11px] px-2 py-0.5 rounded-md mr-1 mb-1 font-mono">${esc(bt)}</span>`).join('');
-        const mixersBadges = (m.mixers || []).map(mx => `<span class="inline-block bg-purple-500/10 text-purple-300 border border-purple-500/20 text-[11px] px-2 py-0.5 rounded-md mr-1 mb-1 font-mono"><i class="fa-solid fa-blender mr-1 text-purple-400"></i>${esc(mx)}</span>`).join('');
+        const mixersBadges = (m.mixers || []).map(mx => `<span class="inline-block bg-purple-500/10 text-purple-300 border border-purple-500/20 text-[11px] px-2 py-0.5 rounded-md mr-1 mb-1 font-mono"><i class="ph-duotone ph-flask mr-1 text-purple-400"></i>${esc(mx)}</span>`).join('');
 
         const tr = document.createElement('tr');
         tr.className = 'hover:bg-slate-800/40 transition duration-150';
         tr.innerHTML = `
-          <td class="py-3.5 px-4 font-bold text-cyan-400 text-sm"><i class="fa-solid fa-plug text-cyan-500 mr-1.5"></i>${esc(m.line)}</td>
+          <td class="py-3.5 px-4 font-bold text-cyan-400 text-sm"><i class="ph-duotone ph-plugs-connected text-cyan-500 mr-1.5"></i>${esc(m.line)}</td>
           <td class="py-3.5 px-4 font-bold text-white">${prodBadges || '-'}</td>
           <td class="py-3.5 px-4">${tanksBadges || '<span class="text-slate-500 text-xs">-</span>'}</td>
           <td class="py-3.5 px-4">${mixersBadges || '<span class="text-slate-500 text-xs">-</span>'}</td>
@@ -1164,8 +1472,8 @@
           </td>
           <td class="py-3.5 px-4 text-center">
             <div class="flex items-center justify-center gap-2">
-              <button onclick="editMatrix('${m.id}')" class="text-slate-400 hover:text-cyan-400 p-1.5 transition"><i class="fa-solid fa-pen-to-square"></i></button>
-              <button onclick="deleteMatrix('${m.id}')" class="text-slate-400 hover:text-rose-400 p-1.5 transition"><i class="fa-solid fa-trash-can"></i></button>
+              <button onclick="editMatrix('${m.id}')" class="text-slate-400 hover:text-cyan-400 p-1.5 transition"><i class="ph-duotone ph-pencil-simple-line"></i></button>
+              <button onclick="deleteMatrix('${m.id}')" class="text-slate-400 hover:text-rose-400 p-1.5 transition"><i class="ph-duotone ph-trash"></i></button>
             </div>
           </td>
         `;
@@ -1175,22 +1483,22 @@
         mCard.className = 'p-3.5 space-y-2.5 bg-slate-900/40';
         mCard.innerHTML = `
           <div class="flex items-center justify-between">
-            <div class="font-bold text-cyan-400 text-base"><i class="fa-solid fa-plug text-cyan-500 mr-1"></i>${esc(m.line)}</div>
+            <div class="font-bold text-cyan-400 text-base"><i class="ph-duotone ph-plugs-connected text-cyan-500 mr-1"></i>${esc(m.line)}</div>
             <span class="px-2 py-0.5 rounded-full text-[11px] font-bold border ${m.status === 'Active' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-slate-800 text-slate-400 border-slate-700'}">${esc(m.status)}</span>
           </div>
           <div class="space-y-1"><div class="text-[10px] uppercase font-bold text-slate-400">Produk Diproduksi:</div><div>${prodBadges || '-'}</div></div>
           <div class="space-y-1"><div class="text-[10px] uppercase font-bold text-slate-400">Buffer Tank:</div><div>${tanksBadges || '-'}</div></div>
           <div class="space-y-1"><div class="text-[10px] uppercase font-bold text-slate-400">Mixer:</div><div>${mixersBadges || '-'}</div></div>
           <div class="flex justify-end gap-3 pt-2 border-t border-slate-800/80">
-            <button onclick="editMatrix('${m.id}')" class="text-cyan-400 text-xs font-semibold flex items-center gap-1.5 py-1 px-2 rounded bg-cyan-950/40 border border-cyan-800/40"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
-            <button onclick="deleteMatrix('${m.id}')" class="text-rose-400 text-xs font-semibold flex items-center gap-1.5 py-1 px-2 rounded bg-rose-950/40 border border-rose-800/40"><i class="fa-solid fa-trash-can"></i> Hapus</button>
+            <button onclick="editMatrix('${m.id}')" class="text-cyan-400 text-xs font-semibold flex items-center gap-1.5 py-1 px-2 rounded bg-cyan-950/40 border border-cyan-800/40"><i class="ph-duotone ph-pencil-simple-line"></i> Edit</button>
+            <button onclick="deleteMatrix('${m.id}')" class="text-rose-400 text-xs font-semibold flex items-center gap-1.5 py-1 px-2 rounded bg-rose-950/40 border border-rose-800/40"><i class="ph-duotone ph-trash"></i> Hapus</button>
           </div>
         `;
         mobileList.appendChild(mCard);
       });
 
       if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="py-12 text-center text-slate-500 font-sans">Belum ada data matriks layout. Silakan tambah data via FAB Button (+).</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="py-12 text-center text-slate-500 font-sans">Belum ada data matriks layout.</td></tr>`;
         mobileList.innerHTML = `<div class="p-8 text-center text-xs text-slate-500">Belum ada data matriks layout.</div>`;
       }
       document.getElementById('matrix-record-count').innerText = `${filtered.length} Routing Records`;
@@ -1200,7 +1508,7 @@
       document.getElementById('form-matrix').reset();
       document.getElementById('matrix-id').value = '';
       cancelCustomLine();
-      document.getElementById('modal-matrix-title').innerHTML = `<i class="fa-solid fa-diagram-project text-cyan-400"></i> Konfigurasi Matriks Routing Line`;
+      document.getElementById('modal-matrix-title').innerHTML = `<i class="ph-duotone ph-graph text-cyan-400"></i> Konfigurasi Matriks Routing Line`;
 
       document.querySelectorAll('input[name="matrix-product"]').forEach(cb => cb.checked = false);
       document.querySelectorAll('input[name="buffer-tank"]').forEach(cb => cb.checked = false);
@@ -1218,7 +1526,7 @@
           document.querySelectorAll('input[name="buffer-tank"]').forEach(cb => { if (m.bufferTanks && m.bufferTanks.includes(cb.value)) cb.checked = true; });
           document.querySelectorAll('input[name="mixer"]').forEach(cb => { if (m.mixers && m.mixers.includes(cb.value)) cb.checked = true; });
 
-          document.getElementById('modal-matrix-title').innerHTML = `<i class="fa-solid fa-pen-to-square text-cyan-400"></i> Edit Routing Matriks Line`;
+          document.getElementById('modal-matrix-title').innerHTML = `<i class="ph-duotone ph-pencil-simple-line text-cyan-400"></i> Edit Routing Matriks Line`;
         }
       }
       document.getElementById('modal-matrix').classList.remove('hidden');
@@ -1263,125 +1571,7 @@
       }
     }
 
-    // --- HELPER CALCULATIONS ---
-    const fmt = (num) => Number(num || 0).toLocaleString('id-ID');
-    // Format desimal khusus 1 angka di belakang koma
-    const fmtDec1 = (num) => Number(num || 0).toLocaleString('id-ID', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-    
-    function calcShortage(target, conf) { const diff = Number(target || 0) - Number(conf || 0); return diff > 0 ? diff : 0; }
-    function calcOutputVal(del, conf) { return Number(del || 0) - Number(conf || 0); }
-    function calcAchievement(target, conf) { const t = Number(target || 0); const c = Number(conf || 0); return t <= 0 ? 0 : (c / t) * 100; }
-    function getMaterialDesc(code) { const item = materials.find(m => m.code === code); return item ? item.desc : '-'; }
-
-    // --- RENDER DASHBOARD ---
-    function renderDashboardTable() {
-      const search = (document.getElementById('dash-search').value || '').toLowerCase();
-      const filterMachine = document.getElementById('dash-filter-machine').value;
-      const filterStatus = document.getElementById('dash-filter-status').value;
-
-      const tbody = document.getElementById('production-tbody');
-      const mobileList = document.getElementById('production-mobile-list');
-      
-      tbody.innerHTML = ''; mobileList.innerHTML = '';
-
-      let totalTarget = 0, totalConf = 0, totalDel = 0, totalShortage = 0, sumAchievement = 0;
-      let uniqueMachines = new Set();
-
-      const filtered = productions.filter(p => {
-        const matDesc = String(getMaterialDesc(p.materialCode)).toLowerCase();
-        const matchSearch = String(p.mesin || '').toLowerCase().includes(search) || String(p.materialCode || '').toLowerCase().includes(search) || matDesc.includes(search);
-        const matchMachine = !filterMachine || p.mesin === filterMachine;
-        
-        const ach = calcAchievement(p.targetQty, p.confQty);
-        let matchStatus = true;
-        if (filterStatus === 'complete') matchStatus = ach >= 100;
-        else if (filterStatus === 'warning') matchStatus = ach >= 80 && ach < 100;
-        else if (filterStatus === 'danger') matchStatus = ach < 80;
-
-        return matchSearch && matchMachine && matchStatus;
-      });
-
-      filtered.forEach(p => {
-        uniqueMachines.add(p.mesin);
-        const shortage = calcShortage(p.targetQty, p.confQty);
-        const outputVal = calcOutputVal(p.delQty, p.confQty);
-        const ach = calcAchievement(p.targetQty, p.confQty);
-
-        totalTarget += Number(p.targetQty || 0);
-        totalConf += Number(p.confQty || 0);
-        totalDel += Number(p.delQty || 0);
-        totalShortage += shortage;
-        sumAchievement += ach;
-
-        let achBadgeClass = ach >= 100 ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : (ach >= 80 ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20');
-
-        const tr = document.createElement('tr');
-        tr.className = 'hover:bg-slate-800/40 transition duration-150';
-        tr.innerHTML = `
-          <td class="py-3 px-3.5 font-sans font-semibold text-white truncate"><i class="fa-solid fa-gears text-blue-400 mr-1.5"></i>${esc(p.mesin)}</td>
-          <td class="py-3 px-3.5 font-bold text-blue-400">${esc(p.materialCode)}</td>
-          <td class="py-3 px-3.5 font-sans text-slate-300 text-xs">${esc(getMaterialDesc(p.materialCode))}</td>
-          <td class="py-3 px-3.5 text-right">${fmt(p.targetQty)}</td>
-          <td class="py-3 px-3.5 text-right text-emerald-400 font-bold">${fmt(p.confQty)}</td>
-          <td class="py-3 px-3.5 text-right text-indigo-400">${fmt(p.delQty)}</td>
-          <td class="py-3 px-3.5 text-right text-slate-300 font-mono">${fmt(outputVal)}</td>
-          <td class="py-3 px-3.5 text-center font-sans"><span class="px-2 py-0.5 text-[10px] rounded bg-slate-800 text-slate-300">${esc(p.unit || 'Pcs')}</span></td>
-          <td class="py-3 px-3.5 text-right text-rose-400 font-bold">${fmt(shortage)}</td>
-          <td class="py-3 px-3.5 text-center"><span class="px-2 py-0.5 rounded-full text-xs font-bold border ${achBadgeClass}">${ach.toFixed(1)}%</span></td>
-          <td class="py-3 px-3.5 text-center font-sans">
-            <div class="flex items-center justify-center gap-1.5">
-              <button onclick="editProduction('${p.id}')" class="text-slate-400 hover:text-blue-400 p-1.5 transition" aria-label="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
-              <button onclick="deleteProduction('${p.id}')" class="text-slate-400 hover:text-rose-400 p-1.5 transition" aria-label="Hapus"><i class="fa-solid fa-trash-can"></i></button>
-            </div>
-          </td>
-        `;
-        tbody.appendChild(tr);
-
-        const mCard = document.createElement('div');
-        mCard.className = 'p-3.5 space-y-2.5 bg-slate-900/40';
-        mCard.innerHTML = `
-          <div class="flex items-start justify-between gap-2">
-            <div>
-              <div class="font-bold text-white text-sm">${esc(p.mesin)}</div>
-              <div class="text-xs font-mono font-bold text-blue-400 mt-0.5">${esc(p.materialCode)}</div>
-              <div class="text-[11px] text-slate-400 line-clamp-1">${esc(getMaterialDesc(p.materialCode))}</div>
-            </div>
-            <span class="px-2 py-0.5 rounded-full text-xs font-bold border shrink-0 ${achBadgeClass}">${ach.toFixed(1)}%</span>
-          </div>
-          <div class="grid grid-cols-5 gap-1 bg-slate-950/60 p-2 rounded-xl text-center text-[10px] font-mono border border-slate-800/80">
-            <div><div class="text-[8px] text-slate-500 uppercase font-sans">Target</div><div class="text-slate-200 font-medium">${fmt(p.targetQty)}</div></div>
-            <div><div class="text-[8px] text-emerald-500 uppercase font-sans">Conf.</div><div class="text-emerald-400 font-bold">${fmt(p.confQty)}</div></div>
-            <div><div class="text-[8px] text-indigo-500 uppercase font-sans">Del.</div><div class="text-indigo-300">${fmt(p.delQty)}</div></div>
-            <div><div class="text-[8px] text-slate-500 uppercase font-sans">Output</div><div class="text-slate-200 font-mono">${fmt(outputVal)}</div></div>
-            <div><div class="text-[8px] text-rose-500 uppercase font-sans">Kurang</div><div class="text-rose-400 font-bold">${fmt(shortage)}</div></div>
-          </div>
-          <div class="flex items-center justify-between text-xs pt-1">
-            <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">${esc(p.unit || 'Pcs')}</span>
-            <div class="flex justify-end gap-2">
-              <button onclick="editProduction('${p.id}')" class="text-blue-400 text-xs font-semibold flex items-center gap-1.5 py-1 px-2 rounded bg-blue-950/40 border border-blue-800/40"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
-              <button onclick="deleteProduction('${p.id}')" class="text-rose-400 text-xs font-semibold flex items-center gap-1.5 py-1 px-2 rounded bg-rose-950/40 border border-rose-800/40"><i class="fa-solid fa-trash-can"></i> Hapus</button>
-            </div>
-          </div>
-        `;
-        mobileList.appendChild(mCard);
-      });
-
-      if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="11" class="py-12 text-center text-slate-500 font-sans">Belum ada catatan produksi. Gunakan FAB Button (+) untuk rekam batch baru.</td></tr>`;
-        mobileList.innerHTML = `<div class="p-8 text-center text-xs text-slate-500">Belum ada data produksi.</div>`;
-      }
-
-      document.getElementById('stat-active-machines').innerText = uniqueMachines.size;
-      document.getElementById('stat-target-qty').innerText = fmt(totalTarget);
-      document.getElementById('stat-conf-qty').innerText = fmt(totalConf);
-      document.getElementById('stat-del-qty').innerText = fmt(totalDel);
-      document.getElementById('stat-shortage-qty').innerText = fmt(totalShortage);
-      const avgAch = filtered.length > 0 ? (sumAchievement / filtered.length) : 0;
-      document.getElementById('stat-avg-achievement').innerText = avgAch.toFixed(1) + '%';
-      document.getElementById('prod-record-count').innerText = `${filtered.length} items`;
-    }
-
-    // --- RENDER MASTER PRODUK (DENGAN 1 ANGKA DESIMAL UTK 1 DUS & 1 REEL CS) ---
+    // --- RENDER TAB 3: MASTER PRODUK ---
     function renderMaterialTable() {
       const search = (document.getElementById('mat-search').value || '').toLowerCase();
       const tbody = document.getElementById('material-tbody');
@@ -1389,24 +1579,27 @@
 
       tbody.innerHTML = ''; mobileList.innerHTML = '';
 
-      const filtered = materials.filter(m => String(m.code || '').toLowerCase().includes(search) || String(m.desc || '').toLowerCase().includes(search));
+      const filtered = materials.filter(m => 
+        String(m.code || '').toLowerCase().includes(search) || 
+        String(m.desc || '').toLowerCase().includes(search)
+      );
 
       filtered.forEach(m => {
         const tr = document.createElement('tr');
         tr.className = 'hover:bg-slate-800/40 transition duration-150';
         tr.innerHTML = `
-          <td class="py-3 px-4 font-bold text-indigo-400 uppercase">${esc(m.code)}</td>
-          <td class="py-3 px-4 font-sans text-white font-medium">${esc(m.desc)}</td>
+          <td class="py-3 px-4 font-bold text-indigo-400">${esc(m.code)}</td>
+          <td class="py-3 px-4 font-sans text-slate-200">${esc(m.desc)}</td>
           <td class="py-3 px-4 text-right">${fmt(m.qty)}</td>
-          <td class="py-3 px-4 text-right text-slate-300">${fmt(m.berat)}</td>
-          <td class="py-3 px-4 text-right text-slate-300 font-bold">${fmtDec1(m.dus)} kg</td>
-          <td class="py-3 px-4 text-right text-slate-300 font-bold">${fmtDec1(m.reelCs)} cs</td>
-          <td class="py-3 px-4 text-right text-slate-300">${fmt(m.reelM)} M</td>
-          <td class="py-3 px-4 text-right text-indigo-300 font-bold">${fmt(m.palletCs)} cs</td>
+          <td class="py-3 px-4 text-right">${fmt(m.berat)}</td>
+          <td class="py-3 px-4 text-right text-emerald-400 font-bold">${fmtDec1(m.dus)}</td>
+          <td class="py-3 px-4 text-right text-amber-400 font-bold">${fmtDec1(m.reelCs)}</td>
+          <td class="py-3 px-4 text-right">${fmt(m.reelM)}</td>
+          <td class="py-3 px-4 text-right">${fmt(m.palletCs)}</td>
           <td class="py-3 px-4 text-center font-sans">
             <div class="flex items-center justify-center gap-1.5">
-              <button onclick="editMaterial('${m.id}')" class="text-slate-400 hover:text-indigo-400 p-1.5"><i class="fa-solid fa-pen-to-square"></i></button>
-              <button onclick="deleteMaterial('${m.id}')" class="text-slate-400 hover:text-rose-400 p-1.5"><i class="fa-solid fa-trash-can"></i></button>
+              <button onclick="editMaterial('${m.id}')" class="text-slate-400 hover:text-indigo-400 p-1.5 transition"><i class="ph-duotone ph-pencil-simple-line"></i></button>
+              <button onclick="deleteMaterial('${m.id}')" class="text-slate-400 hover:text-rose-400 p-1.5 transition"><i class="ph-duotone ph-trash"></i></button>
             </div>
           </td>
         `;
@@ -1415,142 +1608,54 @@
         const mCard = document.createElement('div');
         mCard.className = 'p-3.5 space-y-2 bg-slate-900/40';
         mCard.innerHTML = `
-          <div class="flex items-start justify-between gap-2">
+          <div class="flex items-start justify-between">
             <div>
-              <div class="text-xs font-mono font-bold text-indigo-400 uppercase">${esc(m.code)}</div>
-              <div class="text-sm font-semibold text-white mt-0.5">${esc(m.desc)}</div>
-            </div>
-            <div class="flex items-center gap-1.5 shrink-0">
-              <button onclick="editMaterial('${m.id}')" class="text-indigo-400 text-xs font-semibold flex items-center gap-1 py-1 px-2 rounded bg-indigo-950/40 border border-indigo-800/40"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
-              <button onclick="deleteMaterial('${m.id}')" class="text-rose-400 text-xs font-semibold flex items-center gap-1 py-1 px-2 rounded bg-rose-950/40 border border-rose-800/40"><i class="fa-solid fa-trash-can"></i> Hapus</button>
+              <div class="font-mono font-bold text-indigo-400 text-sm">${esc(m.code)}</div>
+              <div class="font-sans text-slate-200 text-xs font-semibold mt-0.5">${esc(m.desc)}</div>
             </div>
           </div>
           <div class="grid grid-cols-3 gap-1.5 bg-slate-950/60 p-2 rounded-xl text-center text-[10px] font-mono border border-slate-800/80">
-            <div><span class="text-slate-500 font-sans block">Qty Std</span><span class="text-slate-200 font-bold">${fmt(m.qty)}</span></div>
-            <div><span class="text-slate-500 font-sans block">Berat (g/ml)</span><span class="text-slate-200">${fmt(m.berat)}</span></div>
-            <div><span class="text-slate-500 font-sans block">1 Dus (kg)</span><span class="text-slate-100 font-bold">${fmtDec1(m.dus)}</span></div>
-            <div><span class="text-slate-500 font-sans block">Reel (cs)</span><span class="text-slate-100 font-bold">${fmtDec1(m.reelCs)}</span></div>
-            <div><span class="text-slate-500 font-sans block">Reel (M)</span><span class="text-slate-200">${fmt(m.reelM)}</span></div>
-            <div><span class="text-slate-500 font-sans block">Pallet (cs)</span><span class="text-indigo-300 font-bold">${fmt(m.palletCs)}</span></div>
+            <div><div class="text-[8px] text-slate-500 uppercase">Qty Std</div><div>${fmt(m.qty)}</div></div>
+            <div><div class="text-[8px] text-slate-500 uppercase">Berat</div><div>${fmt(m.berat)} g</div></div>
+            <div><div class="text-[8px] text-emerald-500 uppercase">1 Dus (kg)</div><div class="text-emerald-400 font-bold">${fmtDec1(m.dus)}</div></div>
+            <div><div class="text-[8px] text-amber-500 uppercase">1 Reel (cs)</div><div class="text-amber-400 font-bold">${fmtDec1(m.reelCs)}</div></div>
+            <div><div class="text-[8px] text-slate-500 uppercase">1 Reel (M)</div><div>${fmt(m.reelM)}</div></div>
+            <div><div class="text-[8px] text-slate-500 uppercase">1 Pallet (cs)</div><div>${fmt(m.palletCs)}</div></div>
+          </div>
+          <div class="flex justify-end gap-2 pt-1">
+            <button onclick="editMaterial('${m.id}')" class="text-indigo-400 text-xs font-semibold flex items-center gap-1 py-1 px-2 rounded bg-indigo-950/40 border border-indigo-800/40"><i class="ph-duotone ph-pencil-simple-line"></i> Edit</button>
+            <button onclick="deleteMaterial('${m.id}')" class="text-rose-400 text-xs font-semibold flex items-center gap-1 py-1 px-2 rounded bg-rose-950/40 border border-rose-800/40"><i class="ph-duotone ph-trash"></i> Hapus</button>
           </div>
         `;
         mobileList.appendChild(mCard);
       });
 
       if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="9" class="py-12 text-center text-slate-500">Belum ada katalog produk terdaftar. Gunakan FAB Button (+) untuk menambah produk.</td></tr>`;
-        mobileList.innerHTML = `<div class="p-8 text-center text-xs text-slate-500">Belum ada produk terdaftar.</div>`;
+        tbody.innerHTML = `<tr><td colspan="9" class="py-12 text-center text-slate-500 font-sans">Belum ada Master Data Produk.</td></tr>`;
+        mobileList.innerHTML = `<div class="p-8 text-center text-xs text-slate-500">Belum ada data produk.</div>`;
       }
-
       document.getElementById('mat-record-count').innerText = `${filtered.length} Records`;
-      populateMaterialDropdown();
     }
 
-    function populateMaterialDropdown() {
-      const select = document.getElementById('prod-material-select');
-      const currentVal = select.value;
-      select.innerHTML = '<option value="">-- Pilih Produk --</option>';
-      materials.forEach(m => { select.add(new Option(`${m.code} - ${m.desc}`, m.code)); });
-      select.value = currentVal;
-    }
-
-    // --- MODAL PRODUCTION HANDLERS ---
-    function openProductionModal(id = null) {
-      document.getElementById('form-production').reset();
-      document.getElementById('prod-id').value = '';
-      populateMaterialDropdown();
-
-      if (id) {
-        const p = productions.find(x => x.id === id);
-        if (p) {
-          document.getElementById('prod-id').value = p.id;
-          setSelectValue(document.getElementById('prod-mesin-select'), p.mesin);
-          setSelectValue(document.getElementById('prod-material-select'), p.materialCode);
-          document.getElementById('prod-mat-desc').value = getMaterialDesc(p.materialCode);
-          document.getElementById('prod-target-qty').value = p.targetQty;
-          document.getElementById('prod-conf-qty').value = p.confQty;
-          document.getElementById('prod-del-qty').value = p.delQty;
-          document.getElementById('prod-unit').value = p.unit || 'Pcs';
-        }
-      }
-      calcProdAchievement();
-      document.getElementById('modal-production').classList.remove('hidden');
-    }
-
-    function closeProductionModal() { document.getElementById('modal-production').classList.add('hidden'); }
-    function autoFillMaterialDetails() {
-      const matCode = document.getElementById('prod-material-select').value;
-      document.getElementById('prod-mat-desc').value = getMaterialDesc(matCode);
-    }
-
-    function calcProdAchievement() {
-      const target = Number(document.getElementById('prod-target-qty').value || 0);
-      const conf = Number(document.getElementById('prod-conf-qty').value || 0);
-      const del = Number(document.getElementById('prod-del-qty').value || 0);
-
-      const outputVal = calcOutputVal(del, conf);
-      document.getElementById('prod-output-qty').value = fmt(outputVal);
-      document.getElementById('prod-shortage').value = fmt(calcShortage(target, conf));
-      document.getElementById('prod-achievement').value = calcAchievement(target, conf).toFixed(1) + '%';
-    }
-
-    function saveProduction(e) {
-      e.preventDefault();
-      const id = document.getElementById('prod-id').value;
-      const mesin = document.getElementById('prod-mesin-select').value;
-      const materialCode = document.getElementById('prod-material-select').value;
-      const targetQty = Number(document.getElementById('prod-target-qty').value || 0);
-      const confQty = Number(document.getElementById('prod-conf-qty').value || 0);
-      const delQty = Number(document.getElementById('prod-del-qty').value || 0);
-      const unit = document.getElementById('prod-unit').value.trim() || 'Pcs';
-
-      if (!mesin || !materialCode) {
-        showToast('Peringatan', 'Lengkapi Line Produksi dan Produk', 'warning');
-        return;
-      }
-
-      if (id) {
-        const idx = productions.findIndex(p => p.id === id);
-        if (idx !== -1) productions[idx] = { id, mesin, materialCode, targetQty, confQty, delQty, unit };
-      } else {
-        const newId = 'PRD-' + Date.now().toString().slice(-6);
-        productions.unshift({ id: newId, mesin, materialCode, targetQty, confQty, delQty, unit });
-      }
-
-      saveProductions();
-      populateDashFilterMachine();
-      renderDashboardTable();
-      closeProductionModal();
-      showToast('Berhasil', 'Data produksi tersimpan', 'success');
-    }
-
-    function editProduction(id) { openProductionModal(id); }
-    function deleteProduction(id) {
-      if (confirm('Hapus catatan produksi ini?')) {
-        productions = productions.filter(p => p.id !== id);
-        saveProductions();
-        populateDashFilterMachine();
-        renderDashboardTable();
-        showToast('Dihapus', 'Data produksi dihapus', 'danger');
-      }
-    }
-
-    // --- MODAL MATERIAL HANDLERS ---
     function openMaterialModal(id = null) {
       document.getElementById('form-material').reset();
       document.getElementById('mat-id').value = '';
+      document.getElementById('modal-mat-title').innerHTML = `<i class="ph-duotone ph-package text-indigo-400"></i> Form Master Produk`;
+
       if (id) {
         const m = materials.find(x => x.id === id);
         if (m) {
           document.getElementById('mat-id').value = m.id;
-          document.getElementById('mat-code').value = m.code;
-          document.getElementById('mat-desc').value = m.desc;
-          document.getElementById('mat-qty').value = m.qty;
-          document.getElementById('mat-berat').value = m.berat;
-          document.getElementById('mat-dus').value = m.dus;
-          document.getElementById('mat-reel-cs').value = m.reelCs;
-          document.getElementById('mat-reel-m').value = m.reelM;
-          document.getElementById('mat-pallet-cs').value = m.palletCs;
+          document.getElementById('mat-code').value = m.code || '';
+          document.getElementById('mat-desc').value = m.desc || '';
+          document.getElementById('mat-qty').value = m.qty || 0;
+          document.getElementById('mat-berat').value = m.berat || 0;
+          document.getElementById('mat-dus').value = m.dus || 0;
+          document.getElementById('mat-reel-cs').value = m.reelCs || 0;
+          document.getElementById('mat-reel-m').value = m.reelM || 0;
+          document.getElementById('mat-pallet-cs').value = m.palletCs || 0;
+
+          document.getElementById('modal-mat-title').innerHTML = `<i class="ph-duotone ph-pencil-simple-line text-indigo-400"></i> Edit Master Produk`;
         }
       }
       document.getElementById('modal-material').classList.remove('hidden');
@@ -1565,249 +1670,282 @@
       const desc = document.getElementById('mat-desc').value.trim();
       const qty = Number(document.getElementById('mat-qty').value || 0);
       const berat = Number(document.getElementById('mat-berat').value || 0);
-      const dus = Number(parseFloat(document.getElementById('mat-dus').value || 0).toFixed(1));
-      const reelCs = Number(parseFloat(document.getElementById('mat-reel-cs').value || 0).toFixed(1));
+      const dus = Number(document.getElementById('mat-dus').value || 0);
+      const reelCs = Number(document.getElementById('mat-reel-cs').value || 0);
       const reelM = Number(document.getElementById('mat-reel-m').value || 0);
       const palletCs = Number(document.getElementById('mat-pallet-cs').value || 0);
 
-      if (!code || !desc) {
-        showToast('Peringatan', 'Kode dan Deskripsi Produk wajib diisi', 'warning');
-        return;
-      }
-
-      if (materials.some(m => m.code === code && m.id !== id)) {
-        showToast('Peringatan', `Kode produk ${code} sudah terdaftar`, 'warning');
-        return;
-      }
+      if (!code || !desc) { showToast('Peringatan', 'Kode dan Nama Produk Wajib Diisi', 'warning'); return; }
 
       if (id) {
-        const idx = materials.findIndex(m => m.id === id);
-        if (idx !== -1) {
-          const oldCode = materials[idx].code;
-          materials[idx] = { id, code, desc, qty, berat, dus, reelCs, reelM, palletCs };
-          // jaga relasi: catatan produksi yang memakai kode lama ikut diperbarui
-          if (oldCode !== code) {
-            productions.forEach(p => { if (p.materialCode === oldCode) p.materialCode = code; });
-            saveProductions();
-          }
-        }
+        const index = materials.findIndex(x => x.id === id);
+        if (index !== -1) materials[index] = { id, code, desc, qty, berat, dus, reelCs, reelM, palletCs };
       } else {
         const newId = 'PRD-' + Date.now().toString().slice(-6);
         materials.unshift({ id: newId, code, desc, qty, berat, dus, reelCs, reelM, palletCs });
       }
 
       saveMaterials();
+      populateProdMaterialDropdown();
       renderMaterialTable();
       renderDashboardTable();
       closeMaterialModal();
-      showToast('Berhasil', 'Master data produk tersimpan', 'success');
+      showToast('Berhasil', 'Master Produk tersimpan', 'success');
     }
 
     function editMaterial(id) { openMaterialModal(id); }
     function deleteMaterial(id) {
-      if (confirm('Hapus produk ini dari master katalog?')) {
+      if (confirm('Hapus produk ini dari Master Data?')) {
         materials = materials.filter(m => m.id !== id);
         saveMaterials();
+        populateProdMaterialDropdown();
         renderMaterialTable();
         renderDashboardTable();
-        showToast('Dihapus', 'Master produk dihapus', 'danger');
+        showToast('Dihapus', 'Master Produk berhasil dihapus', 'danger');
       }
     }
 
-    // --- EXPORT TO EXCEL ---
+    // --- TAB 4: EXPORT & IMPORT EXCEL ENGINE ---
     function exportAllToExcel() {
-      if (typeof XLSX === 'undefined') {
-        showToast('Kesalahan', 'Library SheetJS tidak dimuat.', 'danger');
-        return;
-      }
-
       const wb = XLSX.utils.book_new();
 
-      const matrixExport = matrixData.map(m => ({
-        'Line Produksi': m.line,
-        'Master Produk': Array.isArray(m.product) ? m.product.join(', ') : m.product,
-        'Buffer Tank': (m.bufferTanks || []).join(', '),
-        'Mixer & Kapasitas': (m.mixers || []).join(', '),
-        'Status Line': m.status
+      // Sheet 1: Master Produk
+      const matData = materials.map(m => ({
+        "Kode Produk": m.code,
+        "Nama Produk": m.desc,
+        "Qty Std": m.qty,
+        "Berat (g/ml)": m.berat,
+        "1 Dus (kg)": m.dus,
+        "1 Reel (cs)": m.reelCs,
+        "1 Reel (M)": m.reelM,
+        "1 Pallet (cs)": m.palletCs
       }));
-      const wsMatrix = XLSX.utils.json_to_sheet(matrixExport);
-      XLSX.utils.book_append_sheet(wb, wsMatrix, 'Matriks Layout');
+      const wsMat = XLSX.utils.json_to_sheet(matData);
+      XLSX.utils.book_append_sheet(wb, wsMat, "Master Produk");
 
-      const prodExport = productions.map(p => ({
-        'Line Produksi': p.mesin,
-        'Kode Produk': p.materialCode,
-        'Deskripsi Produk': getMaterialDesc(p.materialCode),
-        'Target Qty': p.targetQty,
-        'Confirmed Qty': p.confQty,
-        'Delivered Qty': p.delQty,
-        'Hasil Output (Del-Conf)': calcOutputVal(p.delQty, p.confQty),
-        'Unit': p.unit,
-        'Kekurangan': calcShortage(p.targetQty, p.confQty),
-        'Achievement (%)': Number(calcAchievement(p.targetQty, p.confQty).toFixed(2))
+      // Sheet 2: Matriks Layout
+      const mtxData = matrixData.map(m => ({
+        "Line Produksi": m.line,
+        "Master Produk": Array.isArray(m.product) ? m.product.join(', ') : m.product,
+        "Buffer Tank": Array.isArray(m.bufferTanks) ? m.bufferTanks.join(', ') : '',
+        "Mixer": Array.isArray(m.mixers) ? m.mixers.join(', ') : '',
+        "Status": m.status
       }));
-      const wsProd = XLSX.utils.json_to_sheet(prodExport);
-      XLSX.utils.book_append_sheet(wb, wsProd, 'Monitoring Produksi');
+      const wsMtx = XLSX.utils.json_to_sheet(mtxData);
+      XLSX.utils.book_append_sheet(wb, wsMtx, "Matriks Layout");
 
-      const matExport = materials.map(m => ({
-        'Kode Produk': m.code,
-        'Nama Produk': m.desc,
-        'Qty Std': m.qty,
-        'Berat (g/ml)': m.berat,
-        '1 Dus (kg)': Number(Number(m.dus || 0).toFixed(1)),
-        '1 Reel (cs)': Number(Number(m.reelCs || 0).toFixed(1)),
-        '1 Reel (M)': m.reelM,
-        '1 Pallet (cs)': m.palletCs
+      // Sheet 3: Monitoring Produksi
+      const prodData = productions.map(p => ({
+        "Line Produksi": p.mesin,
+        "Kode Produk": p.materialCode,
+        "Deskripsi Produk": getMaterialDesc(p.materialCode),
+        "Target Qty": p.targetQty,
+        "Conf Qty": p.confQty,
+        "Del Qty": p.delQty,
+        "Hasil Output": calcOutputVal(p.delQty, p.confQty),
+        "Unit": p.unit || 'Pcs',
+        "Kekurangan": calcShortage(p.targetQty, p.confQty),
+        "Achievement %": calcAchievement(p.targetQty, p.confQty).toFixed(1) + '%'
       }));
-      const wsMat = XLSX.utils.json_to_sheet(matExport);
-      XLSX.utils.book_append_sheet(wb, wsMat, 'Master Produk');
+      const wsProd = XLSX.utils.json_to_sheet(prodData);
+      XLSX.utils.book_append_sheet(wb, wsProd, "Monitoring Produksi");
 
-      XLSX.writeFile(wb, `PRODMON_Data_Export_${new Date().toISOString().slice(0, 10)}.xlsx`);
-      showToast('Export Sukses', 'Workbook Excel berhasil diunduh', 'success');
+      XLSX.writeFile(wb, `PRODMON_Report_${new Date().toISOString().slice(0,10)}.xlsx`);
+      showToast('Export Berhasil', 'Workbook Excel berhasil diunduh!', 'success');
     }
 
-    // --- IMPORT FROM EXCEL ---
-    function handleFileSelect(event) {
-      const input = event.target;
-      const file = input.files[0];
+    function handleFileSelect(e) {
+      const file = e.target.files[0];
       if (!file) return;
 
-      if (typeof XLSX === 'undefined') {
-        showToast('Kesalahan', 'Library SheetJS tidak dimuat (periksa koneksi internet).', 'danger');
-        input.value = '';
-        return;
-      }
-
-      document.getElementById('file-name-display').innerText = file.name;
+      document.getElementById('file-name-display').innerText = `File: ${file.name}`;
       document.getElementById('file-name-display').classList.remove('hidden');
 
       const reader = new FileReader();
-      reader.onload = function(e) {
+      reader.onload = (evt) => {
         try {
-          const data = new Uint8Array(e.target.result);
+          const data = new Uint8Array(evt.target.result);
           const workbook = XLSX.read(data, { type: 'array' });
-
-          const knownSheets = ['Master Produk', 'Matriks Layout', 'Monitoring Produksi'].filter(n => workbook.SheetNames.includes(n));
-          if (knownSheets.length === 0) {
-            showToast('Import Dibatalkan', 'Sheet "Master Produk", "Matriks Layout", atau "Monitoring Produksi" tidak ditemukan', 'warning');
-            return;
-          }
-          if (!confirm(`Import akan MENGGANTI data yang ada pada: ${knownSheets.join(', ')}.\n\nLanjutkan? (Disarankan Backup JSON dulu)`)) return;
-
-          const VALID_STATUS = ['Active', 'Standby', 'Maintenance'];
-          const normStatus = (s) => VALID_STATUS.find(v => v.toLowerCase() === String(s || '').trim().toLowerCase()) || 'Active';
-          const importedLines = [];
-          let importedCount = 0;
-
-          if (knownSheets.includes('Master Produk')) {
-            const json = XLSX.utils.sheet_to_json(workbook.Sheets['Master Produk']);
-            const mapped = json.map((r, i) => ({
-              id: 'PRD-IMP-' + i + '-' + Date.now().toString().slice(-4),
-              code: String(r['Kode Produk'] || r['code'] || '').trim().toUpperCase(),
-              desc: String(r['Nama Produk'] || r['desc'] || '').trim(),
-              qty: Number(r['Qty Std'] || r['qty'] || 0),
-              berat: Number(r['Berat (g/ml)'] || r['berat'] || 0),
-              dus: Number(parseFloat(r['1 Dus (kg)'] || r['dus'] || 0).toFixed(1)),
-              reelCs: Number(parseFloat(r['1 Reel (cs)'] || r['reelCs'] || 0).toFixed(1)),
-              reelM: Number(r['1 Reel (M)'] || r['reelM'] || 0),
-              palletCs: Number(r['1 Pallet (cs)'] || r['palletCs'] || 0)
-            })).filter(x => x.code && x.desc);
-            if (mapped.length > 0) { materials = mapped; saveMaterials(); importedCount++; }
-          }
-
-          if (knownSheets.includes('Matriks Layout')) {
-            const json = XLSX.utils.sheet_to_json(workbook.Sheets['Matriks Layout']);
-            const mapped = json.map((r, i) => ({
-              id: 'MTX-IMP-' + i + '-' + Date.now().toString().slice(-4),
-              line: String(r['Line Produksi'] || r['line'] || '').trim(),
-              product: String(r['Master Produk'] || r['product'] || '').split(',').map(s => s.trim()).filter(Boolean),
-              bufferTanks: String(r['Buffer Tank'] || r['bufferTanks'] || '').split(',').map(s => s.trim()).filter(Boolean),
-              mixers: String(r['Mixer & Kapasitas'] || r['mixers'] || '').split(',').map(s => s.trim()).filter(Boolean),
-              status: normStatus(r['Status Line'] || r['status'])
-            })).filter(x => x.line);
-            if (mapped.length > 0) { matrixData = mapped; saveMatrixData(); importedCount++; mapped.forEach(x => importedLines.push(x.line)); }
-          }
-
-          if (knownSheets.includes('Monitoring Produksi')) {
-            const json = XLSX.utils.sheet_to_json(workbook.Sheets['Monitoring Produksi']);
-            const mapped = json.map((r, i) => ({
-              id: 'PRD-IMP-' + i + '-' + Date.now().toString().slice(-4),
-              mesin: String(r['Line Produksi'] || r['mesin'] || '').trim(),
-              materialCode: String(r['Kode Produk'] || r['materialCode'] || '').trim().toUpperCase(),
-              targetQty: Number(r['Target Qty'] || r['targetQty'] || 0),
-              confQty: Number(r['Confirmed Qty'] || r['confQty'] || 0),
-              delQty: Number(r['Delivered Qty'] || r['delQty'] || 0),
-              unit: String(r['Unit'] || r['unit'] || 'Pcs')
-            })).filter(x => x.mesin && x.materialCode);
-            if (mapped.length > 0) { productions = mapped; saveProductions(); importedCount++; mapped.forEach(x => importedLines.push(x.mesin)); }
-          }
-
-          // Line baru dari file otomatis masuk Master Line agar bisa dipilih di dropdown
-          let linesAdded = false;
-          importedLines.forEach(l => { if (!masterLines.includes(l)) { masterLines.push(l); linesAdded = true; } });
-          if (linesAdded) saveMasterLines();
-
-          populateLineDropdowns();
-          populateDashFilterMachine();
-          renderMatrixTable();
-          renderDashboardTable();
-          renderMaterialTable();
-
-          if (importedCount > 0) showToast('Import Sukses', 'Data dari Excel berhasil disinkronkan', 'success');
-          else showToast('Import Dibatalkan', 'Tidak ada baris data valid di file, data lama tidak diubah', 'warning');
+          processImportWorkbook(workbook);
+          showToast('Import Berhasil', `Data dari "${file.name}" berhasil disinkronkan!`, 'success');
         } catch (err) {
           console.error(err);
-          showToast('Gagal Import', 'Format file Excel tidak sesuai atau rusak', 'danger');
-        } finally {
-          input.value = ''; // agar file yang sama bisa dipilih ulang
+          showToast('Gagal Import', 'Format file Excel tidak valid', 'danger');
         }
-      };
-      reader.onerror = function() {
-        showToast('Gagal Import', 'File tidak dapat dibaca', 'danger');
-        input.value = '';
       };
       reader.readAsArrayBuffer(file);
     }
 
-    // --- BACKUP & RESET ---
+    function processImportWorkbook(workbook) {
+      // Import Sheet Master Produk
+      if (workbook.SheetNames.includes("Master Produk")) {
+        const sheet = workbook.Sheets["Master Produk"];
+        const rows = XLSX.utils.sheet_to_json(sheet);
+        if (rows.length > 0) {
+          materials = rows.map((r, i) => ({
+            id: 'PRD-IMP-' + i,
+            code: String(r["Kode Produk"] || '').trim().toUpperCase(),
+            desc: String(r["Nama Produk"] || '').trim(),
+            qty: Number(r["Qty Std"] || 0),
+            berat: Number(r["Berat (g/ml)"] || 0),
+            dus: Number(r["1 Dus (kg)"] || 0),
+            reelCs: Number(r["1 Reel (cs)"] || 0),
+            reelM: Number(r["1 Reel (M)"] || 0),
+            palletCs: Number(r["1 Pallet (cs)"] || 0)
+          })).filter(x => x.code && x.desc);
+          saveMaterials();
+        }
+      }
+
+      // Import Sheet Matriks Layout
+      if (workbook.SheetNames.includes("Matriks Layout")) {
+        const sheet = workbook.Sheets["Matriks Layout"];
+        const rows = XLSX.utils.sheet_to_json(sheet);
+        if (rows.length > 0) {
+          matrixData = rows.map((r, i) => ({
+            id: 'MTX-IMP-' + i,
+            line: String(r["Line Produksi"] || '').trim(),
+            product: String(r["Master Produk"] || '').split(',').map(s => s.trim()).filter(Boolean),
+            bufferTanks: String(r["Buffer Tank"] || '').split(',').map(s => s.trim()).filter(Boolean),
+            mixers: String(r["Mixer"] || '').split(',').map(s => s.trim()).filter(Boolean),
+            status: String(r["Status"] || 'Active').trim()
+          })).filter(x => x.line);
+
+          // Update Master Lines
+          const importedLines = Array.from(new Set(matrixData.map(m => m.line)));
+          importedLines.forEach(l => { if (!masterLines.includes(l)) masterLines.push(l); });
+          saveMasterLines();
+          saveMatrixData();
+        }
+      }
+
+      // Import Sheet Monitoring Produksi
+      if (workbook.SheetNames.includes("Monitoring Produksi")) {
+        const sheet = workbook.Sheets["Monitoring Produksi"];
+        const rows = XLSX.utils.sheet_to_json(sheet);
+        if (rows.length > 0) {
+          productions = rows.map((r, i) => ({
+            id: 'PRD-REC-IMP-' + i,
+            mesin: String(r["Line Produksi"] || '').trim(),
+            materialCode: String(r["Kode Produk"] || '').trim().toUpperCase(),
+            targetQty: Number(r["Target Qty"] || 0),
+            confQty: Number(r["Conf Qty"] || 0),
+            delQty: Number(r["Del Qty"] || 0),
+            unit: String(r["Unit"] || 'Pcs').trim()
+          })).filter(x => x.mesin && x.materialCode);
+          saveProductions();
+        }
+      }
+
+      populateLineDropdowns();
+      populateDashFilterMachine();
+      populateProdMaterialDropdown();
+      renderDashboardTable();
+      renderMatrixTable();
+      renderMaterialTable();
+    }
+
+    // --- AUTO SYNC FILE SYSTEM API ENGINE ---
+    let fileHandle = null;
+    let autoSyncTimer = null;
+
+    function initExcelSync() {
+      const isSupported = 'showOpenFilePicker' in window;
+      if (!isSupported) {
+        const unsupp = document.getElementById('sync-unsupported');
+        if (unsupp) unsupp.classList.remove('hidden');
+      }
+    }
+
+    async function linkExcelFile() {
+      if (!('showOpenFilePicker' in window)) {
+        showToast('Fitur Tidak Didukung', 'Browser tidak mendukung direct file linking. Gunakan tombol Upload.', 'warning');
+        return;
+      }
+      try {
+        const [handle] = await window.showOpenFilePicker({
+          types: [{ description: 'Excel Files', accept: { 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx'] } }],
+          multiple: false
+        });
+        fileHandle = handle;
+        document.getElementById('sync-status').innerText = `Terhubung ke: ${handle.name}`;
+        showToast('Terhubung', `File Excel "${handle.name}" berhasil dihubungkan!`, 'success');
+        syncNow(false);
+      } catch (err) {
+        console.log('Batal pilih file', err);
+      }
+    }
+
+    async function syncNow(manual = true) {
+      if (!fileHandle) {
+        if (manual) showToast('Peringatan', 'Belum ada file Excel yang terhubung', 'warning');
+        return;
+      }
+      try {
+        const file = await fileHandle.getFile();
+        const arrayBuffer = await file.arrayBuffer();
+        const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
+        processImportWorkbook(workbook);
+        document.getElementById('sync-status').innerText = `Terhubung ke: ${fileHandle.name} (Sync Terakhir: ${new Date().toLocaleTimeString('id-ID')})`;
+        if (manual) showToast('Sinkronisasi Sukses', 'Data diperbarui dari file Excel', 'success');
+      } catch (err) {
+        console.error(err);
+        showToast('Gagal Sync', 'Gagal membaca file Excel terhubung', 'danger');
+      }
+    }
+
+    function toggleAutoSync(enabled) {
+      if (autoSyncTimer) clearInterval(autoSyncTimer);
+      if (enabled) {
+        autoSyncTimer = setInterval(() => { syncNow(false); }, 5000);
+        showToast('Auto-Sync Aktif', 'Aplikasi akan mengecek file Excel tiap 5 detik', 'info');
+      }
+    }
+
+    function loadFromCachedExcel() { syncNow(true); }
+    function unlinkExcelFile() {
+      fileHandle = null;
+      if (autoSyncTimer) clearInterval(autoSyncTimer);
+      document.getElementById('sync-auto-toggle').checked = false;
+      document.getElementById('sync-status').innerText = 'Belum terhubung ke file Excel.';
+      showToast('Tautan Terputus', 'Koneksi ke file Excel dilepas', 'info');
+    }
+
+    // --- SYSTEM BACKUP & RESET ---
     function exportJSONBackup() {
-      const backupObj = {
+      const backup = {
         materials,
         productions,
         matrixData,
         masterLines,
-        exportDate: new Date().toISOString()
+        timestamp: new Date().toISOString()
       };
-      const blob = new Blob([JSON.stringify(backupObj, null, 2)], { type: 'application/json' });
-      const blobUrl = URL.createObjectURL(blob);
-      const downloadAnchor = document.createElement('a');
-      downloadAnchor.setAttribute("href", blobUrl);
-      downloadAnchor.setAttribute("download", `PRODMON_Backup_${new Date().toISOString().slice(0, 10)}.json`);
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      downloadAnchor.remove();
-      setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
-      showToast('Backup Sukses', 'File JSON cadangan tersimpan', 'success');
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `PRODMON_FullBackup_${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Backup Berhasil', 'File JSON Backup telah diunduh', 'success');
     }
 
     function resetSystemData() {
-      if (confirm('APAKAH ANDA YAKIN? Seluruh data produksi, matriks, dan master produk lokal akan dihapus permanent!')) {
-        // hanya hapus kunci milik PRODMON (bukan seluruh localStorage origin), lalu simpan kondisi kosong
-        // agar setelah reload data tidak "hidup kembali" dari seed.
-        Object.values(STORAGE_KEYS).forEach(k => { try { localStorage.removeItem(k); } catch (e) { /* abaikan */ } });
+      if (confirm('PERINGATAN! Seluruh data di aplikasi akan dihapus bersih. Lanjutkan?')) {
+        localStorage.clear();
         materials = [];
         productions = [];
         matrixData = [];
-        masterLines = DEFAULT_MASTER_LINES.slice();
-        saveMaterials();
-        saveProductions();
-        saveMatrixData();
-        saveMasterLines();
+        masterLines = [];
+        saveMaterials(); saveProductions(); saveMatrixData(); saveMasterLines();
+
         populateLineDropdowns();
         populateDashFilterMachine();
-        renderMatrixTable();
+        populateProdMaterialDropdown();
         renderDashboardTable();
+        renderMatrixTable();
         renderMaterialTable();
-        showToast('Reset Berhasil', 'Database lokal telah dibersihkan', 'warning');
+        showToast('Database Bersih', 'Seluruh data lokal telah dihapus', 'danger');
       }
     }
   </script>
